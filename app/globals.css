@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 24 27% 7%;
+    --foreground: 38 40% 94%;
+    --card: 24 25% 10%;
+    --card-foreground: 38 40% 94%;
+    --popover: 24 25% 10%;
+    --popover-foreground: 38 40% 94%;
+    --primary: 34 88% 55%;
+    --primary-foreground: 24 35% 8%;
+    --secondary: 25 35% 18%;
+    --secondary-foreground: 36 45% 88%;
+    --muted: 24 24% 16%;
+    --muted-foreground: 34 19% 66%;
+    --accent: 13 68% 42%;
+    --accent-foreground: 38 40% 94%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 38 40% 94%;
+    --border: 28 25% 22%;
+    --input: 28 25% 22%;
+    --ring: 34 88% 55%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 24 27% 7%;
+    --foreground: 38 40% 94%;
+    --card: 24 25% 10%;
+    --card-foreground: 38 40% 94%;
+    --popover: 24 25% 10%;
+    --popover-foreground: 38 40% 94%;
+    --primary: 34 88% 55%;
+    --primary-foreground: 24 35% 8%;
+    --secondary: 25 35% 18%;
+    --secondary-foreground: 36 45% 88%;
+    --muted: 24 24% 16%;
+    --muted-foreground: 34 19% 66%;
+    --accent: 13 68% 42%;
+    --accent-foreground: 38 40% 94%;
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 38 40% 94%;
+    --border: 28 25% 22%;
+    --input: 28 25% 22%;
+    --ring: 34 88% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    background:
+      radial-gradient(circle at top left, hsl(34 88% 28% / 0.22), transparent 34rem),
+      radial-gradient(circle at 85% 12%, hsl(13 68% 24% / 0.28), transparent 28rem),
+      linear-gradient(180deg, hsl(24 27% 7%), hsl(24 32% 5%) 68%);
+  }
+}
