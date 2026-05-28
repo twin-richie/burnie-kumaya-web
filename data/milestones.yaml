@@ -1,0 +1,11 @@
+- id: milestone-placeholder
+  date: 2026-06-01
+  title: Placeholder seed data replaced
+  type: build
+  area: general
+  description: Target date for replacing placeholder data with richer issue 3 seed data.
+  confidence: low
+  provenance:
+    - source_type: manual_seed
+      source_ref: issue-2-placeholder
+      source_date: 2026-05-28

@@ -1,0 +1,18 @@
+- id: task-placeholder
+  title: Replace placeholder datastore with project seed data
+  status: open
+  priority: normal
+  area: general
+  owner: person-burnie
+  due_date: 2026-06-01
+  next_action: Add richer seed data in the follow-up issue.
+  notes: Minimal task kept intentionally small for issue 2.
+  needs_review: true
+  review_note: Placeholder should be replaced by issue 3 seed data.
+  confidence: low
+  provenance:
+    - source_type: manual_seed
+      source_ref: issue-2-placeholder
+      source_date: 2026-05-28
+  created_at: 2026-05-28
+  updated_at: 2026-05-28

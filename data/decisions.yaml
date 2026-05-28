@@ -1,0 +1,11 @@
+- id: decision-placeholder
+  date: 2026-05-28
+  title: Keep issue 2 seed data minimal
+  decision: Use a compact placeholder dataset for schema and reference validation.
+  area: general
+  rationale: Rich domain seed data is reserved for issue 3.
+  confidence: low
+  provenance:
+    - source_type: manual_seed
+      source_ref: issue-2-placeholder
+      source_date: 2026-05-28

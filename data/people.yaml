@@ -1,0 +1,11 @@
+- id: person-burnie
+  name: Burnie Placeholder
+  role: Planning placeholder
+  areas:
+    - general
+  notes: Minimal seed person used to validate references.
+  confidence: low
+  provenance:
+    - source_type: manual_seed
+      source_ref: issue-2-placeholder
+      source_date: 2026-05-28

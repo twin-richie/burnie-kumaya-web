@@ -1,0 +1,17 @@
+- id: update-placeholder
+  date: 2026-05-28
+  title: Initial YAML datastore added
+  summary: Added a minimal placeholder dataset to validate schemas, references, provenance, and confidence.
+  changed_objects:
+    - type: task
+      id: task-placeholder
+      change: Added placeholder planning task.
+    - type: decision
+      id: decision-placeholder
+      change: Added placeholder validation decision.
+  source: issue-2-placeholder
+  confidence: low
+  provenance:
+    - source_type: manual_seed
+      source_ref: issue-2-placeholder
+      source_date: 2026-05-28
