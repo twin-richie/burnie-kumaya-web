@@ -1,17 +1,68 @@
-- id: update-placeholder
+- id: update-2026-05-28-v1-seed-import
   date: 2026-05-28
-  title: Initial YAML datastore added
-  summary: Added a minimal placeholder dataset to validate schemas, references, provenance, and confidence.
+  title: Seeded Burnie/Kumaya v1 planning state
+  summary: Replaced issue-2 placeholder data with concise v1 planning records derived from Kumaya context files, preserving provenance and confidence on every record, moving the committee meeting into data/meetings layout, and expanding task coverage across the remaining active open-action-item domains.
   changed_objects:
+    - type: area
+      id: meetings-admin
+      change: Added canonical kebab-case planning areas including meetings-admin, finance, build-shade, power, kitchen-food, interactivity-events, campers, water, fuel, and transport-reno.
+    - type: person
+      id: allan
+      change: Added camp lead and contributor records from overview, people, and committee notes using canonical area references.
     - type: task
-      id: task-placeholder
-      change: Added placeholder planning task.
+      id: task-generator-strategy
+      change: Added current open tasks from committee meeting and open action inventory; expanded concise representative tasks for build, water, transport, fuel, and reimbursement domains with needs_review where ownership is unsupported.
+    - type: task
+      id: task-kitchen-wind-stability
+      change: Added missing kitchen wind-stability action item from the open action inventory without inventing an owner or due date.
+    - type: task
+      id: task-shower-system-evaluation
+      change: Added shower pump, backup-pump, and possible second-shower evaluation task with Martin as inferred water owner and review requested.
+    - type: task
+      id: task-power-tool-readiness
+      change: Added charger, inverter, charged-tool, and impact-driver attachment readiness task with owner inference marked for review.
+    - type: task
+      id: task-reno-shopping-kitchen-inventory
+      change: Added Reno shopping and kitchen inventory-pass task from the open action inventory.
+    - type: task
+      id: task-camp-comfort-chairs-rugs
+      change: Added camp comfort chair and rug replenishment task without unsupported owner or due date.
+    - type: task
+      id: task-camper-roster-logistics-fields
+      change: Added camper roster/logistics field tracking task with Helena as inferred campers-area owner and review requested.
+    - type: task
+      id: task-placement-application-materials
+      change: Added placement/application-materials task using the 2025 questionnaire as the explicit source basis.
+    - type: task
+      id: task-f-and-b-prep-workflow
+      change: Added F&B prep workflow task covering menu docs, Costco receipt, Reno prep, remaining purchases, pre-portioning, and cold-chain packing.
+    - type: task
+      id: task-kitchen-consumables-replenishment
+      change: Added kitchen consumables replenishment task from the open action inventory.
+    - type: task
+      id: task-library-journal-interactivity
+      change: Added library and journal interactivity task for journal crowdsourcing, email-list pages, scanning/uploading, hanging books, and frontage materials.
+    - type: task
+      id: task-post-burn-feedback-capture-plan
+      change: Added pre-burn planning task for capturing post-burn feedback on food, kitchen stability, Tea & Tunes, library interactivity, and logistics.
+    - type: meeting
+      id: 2026-05-25-kumaya-committee
+      change: Converted committee meeting summary into immutable-ish source meeting record under data/meetings.
     - type: decision
-      id: decision-placeholder
-      change: Added placeholder validation decision.
-  source: issue-2-placeholder
-  confidence: low
+      id: dec-2026-dues-budget-targets
+      change: Added normalized decisions from the May 25 committee meeting and decisions log with updated canonical area references.
+    - type: milestone
+      id: milestone-full-dues-due
+      change: Kept only sourced meeting, fundraiser, and payment milestone dates; removed inferred August workback dates and the unsourced August feedback-plan date.
+  source: issue-3-v1-seed
+  confidence: high
   provenance:
     - source_type: manual_seed
-      source_ref: issue-2-placeholder
+      source_ref: issue-3-v1-seed
       source_date: 2026-05-28
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25

@@ -1,11 +1,143 @@
-- slug: general
-  name: General
-  description: Placeholder area for initial datastore validation.
-  lead: person-burnie
-  icon: circle
+- slug: meetings-admin
+  name: Meetings and Admin
+  description: Overall Kumaya 2026 coordination, commitments, dependencies, decisions, meeting follow-through, and admin work.
+  lead: allan
+  icon: users
   color: slate
-  confidence: low
+  confidence: high
   provenance:
-    - source_type: manual_seed
-      source_ref: issue-2-placeholder
+    - source_type: doc
+      source_ref: kumaya/overview.md
       source_date: 2026-05-28
+      quote: "Burnie’s job is to help keep context on commitments, dependencies, decisions, and follow-through."
+
+- slug: finance
+  name: Finance and Dues
+  description: Budget assumptions, dues, deposits, fundraiser targets, reimbursements, and payment collection.
+  lead: allan
+  icon: dollar-sign
+  color: emerald
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Dues increase from $800 to $900 per person."
+
+- slug: build-shade
+  name: Build and Shade
+  description: Shade, EMT poles, build consumables, camp layout, kitchen wind-stability, and related physical build planning.
+  icon: wrench
+  color: amber
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Build a new shade structure with EMT poles and a 90% shade tarp designed for wind and water."
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Revise 2026 camp layout: tighter/smaller; avoid bathroom next to kitchen; include gas storage, fire/service lane, generators, trailer access, porto, shower/evap."
+
+- slug: power
+  name: Power
+  description: Generator research and power system reliability for camp operations.
+  lead: richie
+  icon: zap
+  color: yellow
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Richie handles power."
+
+- slug: kitchen-food
+  name: Kitchen and Food
+  description: Kitchen planning, food quantities, freezer/cold-chain decisions, menus, consumables, and Reno food prep workflow.
+  lead: cynthia
+  icon: utensils
+  color: orange
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Cynthia handles kitchen and food."
+
+- slug: interactivity-events
+  name: Interactivity and Events
+  description: Tea & Tunes, Sound Oasis, the 24/7 library offering, art-car partnerships, journals, sound setup, and playa experience design.
+  lead: anton
+  icon: music
+  color: purple
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Anton handles interactivity and events."
+
+- slug: campers
+  name: Campers and Interviews
+  description: Camper roster, applicant interviews, expectations conversations, onboarding, and arrival/departure logistics.
+  lead: helena
+  icon: badge-check
+  color: sky
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Helena: interviewing Gaelle and interview support for Julia."
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Set up interviews with potential new campers."
+
+- slug: water
+  name: Water and Greywater
+  description: Water fill/refill, water-use communications, shower/evap planning, greywater pump-out, and porto/USS service dependencies.
+  lead: martin
+  icon: droplet
+  color: blue
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Martin handles water and gasoline."
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Water/cold-chain prep: pre-freeze water bottles; schedule water fill/refill and greywater pump-out; keep water-use limits in comms."
+
+- slug: fuel
+  name: Fuel and Propane
+  description: Gasoline, propane, fuel storage, fire extinguishers, and fuel-compliance preparation.
+  lead: martin
+  icon: flame
+  color: red
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Martin handles water and gasoline."
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Fire/fuel/propane prep: buy fire extinguishers, buy/refill propane tanks, fill gas, confirm fuel storage location/compliance."
+
+- slug: transport-reno
+  name: Transport and Reno Logistics
+  description: Reno pre-build, trailer packing, truck/trailer readiness, Reno shopping, inventory passes, and load-in/load-out logistics.
+  icon: truck
+  color: zinc
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Pre-build/Reno logistics: crew in Reno by Tuesday night, start Wednesday morning, trailer fully packed by Thursday night, avoid Friday morning packing."

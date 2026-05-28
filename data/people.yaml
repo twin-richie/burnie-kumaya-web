@@ -1,11 +1,151 @@
-- id: person-burnie
-  name: Burnie Placeholder
-  role: Planning placeholder
-  areas:
-    - general
-  notes: Minimal seed person used to validate references.
-  confidence: low
+- id: allan
+  name: Allan
+  role: Camp lead / main coordinator; payment collection communications
+  areas: [meetings-admin, finance]
+  notes: Sends payment collection details to the group.
+  confidence: high
   provenance:
-    - source_type: manual_seed
-      source_ref: issue-2-placeholder
+    - source_type: doc
+      source_ref: kumaya/people.md
       source_date: 2026-05-28
+      quote: "Allan: camp lead / main coordinator"
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Allan: send payment collection details to the group."
+
+- id: anton
+  name: Anton
+  role: Camp lead / main coordinator; interactivity and events
+  areas: [meetings-admin, interactivity-events, kitchen-food]
+  notes: Tracks freezer deals and Facebook Marketplace alerts.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Anton handles interactivity and events."
+    - source_type: doc
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Anton: freezer deal tracking and Facebook Marketplace alerts"
+
+- id: richie
+  name: Richie
+  role: Camp lead / main coordinator; power
+  areas: [meetings-admin, power]
+  notes: Researching generator options and expected to send specific model recommendations.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Richie handles power."
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Richie: send specific generator model recommendations."
+
+- id: cynthia
+  name: Cynthia
+  role: Camp lead / main coordinator; kitchen and food
+  areas: [meetings-admin, kitchen-food, campers]
+  notes: Coordinates decisions and freezer deal tracking; supports Julia expectations interview with Helena.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Cynthia handles kitchen and food."
+    - source_type: doc
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Cynthia / Helena: interview Julia."
+
+- id: helena
+  name: Helena
+  role: Camp lead / main coordinator; applicant interview support
+  areas: [meetings-admin, campers]
+  notes: Interviewing Gaelle and helping with Julia expectations interview.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Helena: interviewing Gaelle and interview support for Julia"
+
+- id: martin
+  name: Martin
+  role: Camp lead / main coordinator; water and gasoline
+  areas: [meetings-admin, water, fuel, finance, campers]
+  notes: Handles payment collection details and Eric interview support; leaving Saturday morning with Perita for a Panama wedding.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Martin handles water and gasoline."
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Martin and Perita are leaving Saturday morning for a Panama wedding."
+
+- id: perita
+  name: Perita
+  role: Camper with early departure constraint
+  areas: [campers]
+  notes: Early departure Saturday morning for the Panama wedding timeline.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Perita: early departure on Saturday morning"
+
+- id: jack
+  name: Jack
+  role: Camper with possible late-stay constraint
+  areas: [campers]
+  notes: May stay until Thursday for the Panama wedding timeline, creating possible strike/cleanup complexity.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Jack may stay until Thursday for the same wedding, which creates strike / cleanup complexity."
+
+- id: julia
+  name: Julia
+  role: Applicant / friend-of-camp candidate
+  areas: [campers]
+  notes: Effectively approved pending expectations conversation.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Julia: automatic approval, but conduct an expectations interview."
+
+- id: gaelle
+  name: Gaelle
+  role: Strong applicant and July fundraiser helper
+  areas: [campers, finance]
+  notes: Helena to interview.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Gaelle: strong applicant and July fundraiser helper"
+
+- id: eric
+  name: Eric
+  role: Applicant
+  areas: [campers]
+  notes: To be interviewed by Martin and one other person.
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Eric: applicant, to be interviewed by Martin + one other"

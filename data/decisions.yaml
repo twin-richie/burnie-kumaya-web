@@ -1,11 +1,99 @@
-- id: decision-placeholder
-  date: 2026-05-28
-  title: Keep issue 2 seed data minimal
-  decision: Use a compact placeholder dataset for schema and reference validation.
-  area: general
-  rationale: Rich domain seed data is reserved for issue 3.
-  confidence: low
+- id: dec-2026-committed-goal-20
+  date: 2026-05-25
+  title: Track 18 committed people with goal of 20+
+  decision: The committee recorded 18 committed people so far and a goal of landing at 20+ people for financial comfort.
+  area: campers
+  confidence: high
   provenance:
-    - source_type: manual_seed
-      source_ref: issue-2-placeholder
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "18 people are committed so far. Goal is to land at 20+ people for financial comfort."
+
+- id: dec-2026-dues-budget-targets
+  date: 2026-05-25
+  title: Set 2026 dues and core budget targets
+  decision: Food budget increases to $140/person, water remains $75/person, dues increase from $800 to $900/person, and the July 11 NYC rooftop fundraiser target is $2,000-$3,000.
+  area: finance
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Food budget increases to $140 per person. Water budget remains $75 per person. Dues increase from $800 to $900 per person."
+
+- id: dec-original-investors-pay-same
+  date: 2026-05-25
+  title: Original investors pay same amount
+  decision: All original investors pay the same amount.
+  area: finance
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "All original investors pay the same amount."
+
+- id: dec-generator-upgrade-priority
+  date: 2026-05-25
+  title: Prioritize electric-start generator upgrade
+  decision: Generator priority is to replace Harbor Freight units with a single electric-start Honda; budget is roughly $1,000+.
+  area: power
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Generator priority is to replace the Harbor Freight units with a single electric-start Honda."
+
+- id: dec-freezer-pending
+  date: 2026-05-25
+  title: New chest freezer decision remains pending
+  decision: There is a pending decision to get a new chest freezer; no final freezer decision has been made yet.
+  area: kitchen-food
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "There is a pending decision to get a new chest freezer; no final freezer decision has been made yet."
+
+- id: dec-shade-structure-upgrade
+  date: 2026-05-25
+  title: Build new shade structure with EMT and 90% shade tarp
+  decision: Build a new shade structure with EMT poles and a 90% shade tarp designed for wind and water.
+  area: build-shade
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Build a new shade structure with EMT poles and a 90% shade tarp designed for wind and water."
+
+- id: dec-tea-tunes-art-car-direction
+  date: 2026-05-25
+  title: Evolve Tea & Tunes into larger playa experience
+  decision: Tea & Tunes should evolve into a larger interactive experience, ideally with an art car partnership.
+  area: interactivity-events
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Tea & Tunes should evolve into a larger interactive experience, ideally with an art car partnership."
+
+- id: dec-sound-oasis-library-distinct
+  date: 2026-05-25
+  title: Keep Sound Oasis distinct from 24/7 library offering
+  decision: Sound Oasis is a specific event; the library is the persistent 24/7 offering.
+  area: interactivity-events
+  confidence: high
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/overview.md
       source_date: 2026-05-28
+      quote: "Sound Oasis is a specific event; the library is the persistent 24/7 offering."
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Keep Sound Oasis as a separate 24/7 library offering."

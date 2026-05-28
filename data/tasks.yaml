@@ -1,18 +1,601 @@
-- id: task-placeholder
-  title: Replace placeholder datastore with project seed data
+- id: task-generator-strategy
+  title: Research and choose upgraded generator strategy
+  status: open
+  priority: high
+  area: power
+  owner: richie
+  next_action: Send specific generator model recommendations, including electric start, self-refueling, and weather/sun shelter considerations.
+  notes: Committee preference is replacing Harbor Freight units with a single electric-start Honda; budget roughly $1,000+.
+  needs_review: false
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Richie: research generator options and send specific model recommendations."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-freezer-decision
+  title: Decide whether to get a new chest freezer
+  status: open
+  priority: high
+  area: kitchen-food
+  owner: anton
+  next_action: Track freezer deals and confirm thermostat/control needs and fridge/freezer packing plan before purchase.
+  notes: No final freezer decision has been made yet.
+  needs_review: true
+  review_note: Anton is explicitly assigned Marketplace freezer alerts; confirm whether he owns the broader freezer decision.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "There is a pending decision to get a new chest freezer; no final freezer decision has been made yet."
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Anton: set up Facebook Marketplace alerts for freezer deals."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-shade-emt-upgrade
+  title: Purchase EMT poles and 90% mesh shade for new shade structure
+  status: open
+  priority: high
+  area: build-shade
+  next_action: Verify EMT pickup/cutting plan and source 90% mesh shade that will not sag in rain.
+  notes: Owner not explicit in current notes.
+  needs_review: true
+  review_note: Assign a named owner for EMT pole and shade purchases.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Build a new shade structure with EMT poles and a 90% shade tarp designed for wind and water."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-collect-deposits-dues
+  title: Collect camper deposits and full dues
+  status: open
+  priority: urgent
+  area: finance
+  owner: allan
+  due_date: 2026-07-15
+  next_action: Send payment collection details to the group and track minimum $300 deposits with full $900 due by July 15.
+  needs_review: false
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Collect deposits: minimum $300, full $900 due by July 15."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-interview-gaelle
+  title: Interview Gaelle
   status: open
   priority: normal
-  area: general
-  owner: person-burnie
-  due_date: 2026-06-01
-  next_action: Add richer seed data in the follow-up issue.
-  notes: Minimal task kept intentionally small for issue 2.
-  needs_review: true
-  review_note: Placeholder should be replaced by issue 3 seed data.
-  confidence: low
+  area: campers
+  owner: helena
+  next_action: Complete interview and record membership recommendation.
+  needs_review: false
+  confidence: high
   provenance:
-    - source_type: manual_seed
-      source_ref: issue-2-placeholder
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Gaelle: highly recommended; Helena to interview."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-interview-eric
+  title: Interview Eric
+  status: open
+  priority: normal
+  area: campers
+  owner: martin
+  next_action: Martin plus one other person to interview Eric.
+  needs_review: true
+  review_note: Identify the second interviewer.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Eric: Martin and one other person to interview."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-interview-julia-expectations
+  title: Conduct expectations conversation with Julia
+  status: open
+  priority: normal
+  area: campers
+  owner: helena
+  next_action: Cynthia and/or Helena to hold the expectations conversation.
+  notes: Julia is effectively approved pending expectations alignment.
+  needs_review: true
+  review_note: Confirm whether Cynthia or Helena owns the final follow-up.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Julia: automatic approval, but conduct an expectations interview."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-source-art-car
+  title: Source an art car partnership for Tea & Tunes
+  status: open
+  priority: high
+  area: interactivity-events
+  owner: anton
+  next_action: Everyone searches for potential art-car partnerships; Anton leads interactivity/events follow-through.
+  notes: Owner inferred from Anton owning interactivity/events; meeting assigned search to everyone.
+  needs_review: true
+  review_note: Confirm Anton as accountable owner versus broad committee ownership.
+  confidence: medium
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Everyone: search for art car partnerships."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
       source_date: 2026-05-28
+      quote: "Anton handles interactivity and events."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-revise-camp-layout
+  title: Revise 2026 camp layout
+  status: open
+  priority: high
+  area: build-shade
+  next_action: Draft tighter/smaller layout avoiding bathroom next to kitchen and including gas storage, fire/service lane, generators, trailer access, porto, shower/evap.
+  needs_review: true
+  review_note: Assign layout owner and deadline.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Revise 2026 camp layout: tighter/smaller; avoid bathroom next to kitchen; include gas storage, fire/service lane, generators, trailer access, porto, shower/evap."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-porto-greywater-service-plan
+  title: Plan USS, porto, and greywater servicing
+  status: open
+  priority: normal
+  area: water
+  next_action: Confirm timing, in-camp coverage needs, cash for flag-down/additional service, and better porto lock.
+  needs_review: true
+  review_note: Assign service logistics owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Plan USS/porto/greywater servicing: timing, in-camp coverage, cash for flag-downs/additional service, better porto lock."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-food-quantity-reduction
+  title: Reduce 2026 food quantities and use leftover inventory
+  status: open
+  priority: normal
+  area: kitchen-food
+  owner: cynthia
+  next_action: Adjust food planning, especially rice and bulk staples, using leftover inventory to avoid overbuying.
+  needs_review: true
+  review_note: Cynthia owner is inferred from kitchen/food area ownership; confirm accountable owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Reduce 2026 food quantities, especially rice/bulk staples; use leftover inventory to avoid overbuying."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Cynthia handles kitchen and food."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-finalize-budget-assumptions
+  title: Finalize 2026 budget assumptions
+  status: open
+  priority: high
+  area: finance
+  next_action: Reconcile camp size, $900 dues model, shortfall/surplus, water/build-strike costs, and owner/rental-fee/depreciation assumptions.
+  needs_review: true
+  review_note: Assign finance owner for final model.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Finalize 2026 budget assumptions: camp size, $900 dues model, shortfall/surplus, water/build-strike costs, owner/rental-fee/depreciation assumptions."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-onboarding-materials
+  title: Update camper onboarding and manuals
+  status: open
+  priority: normal
+  area: campers
+  next_action: Refresh orientation agenda, handbook, shift info, dues/inclusions, camp expectations, manuals, laminated instructions, and shift schedule.
+  needs_review: true
+  review_note: Assign owner and split durable manuals from transient onboarding comms.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Update camper onboarding: orientation agenda, handbook, shift info, dues/inclusions, and camp expectations."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-tea-tunes-supplies
+  title: Confirm Tea & Tunes supplies and tea-house setup
+  status: open
+  priority: normal
+  area: interactivity-events
+  owner: anton
+  next_action: Confirm hot-water gallon jugs, tea, stickers, rugs, books, lamps, and hot-water logistics.
+  needs_review: true
+  review_note: Anton owner is inferred from interactivity/events area ownership; confirm accountable owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Confirm Tea & Tunes supplies: hot-water gallon jugs, tea, stickers, rugs."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Anton handles interactivity and events."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-sound-oasis-library-setup
+  title: Prepare Sound Oasis and library sound/interactivity setup
+  status: open
+  priority: normal
+  area: interactivity-events
+  owner: anton
+  next_action: Download music, collect Sound Oasis music, test DJ/sound setup, prepare journals and frontage materials.
+  needs_review: false
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Prepare Sound Oasis/library sound setup: download music to iPod, collect Sound Oasis music, test DJ/sound setup, preserve sit-down library party concept."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-restock-build-consumables
+  title: Restock build consumables
+  status: open
+  priority: normal
+  area: build-shade
+  next_action: Check and restock bungees, washer/lag-bolt fit, straps, and ratchets as needed.
+  needs_review: true
+  review_note: Assign owner and confirm quantities before purchase.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Restock build consumables: ~250 bungees, washer/lag-bolt fit, straps/ratchets as needed."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-water-cold-chain-prep
+  title: Plan water and cold-chain prep
+  status: open
+  priority: normal
+  area: water
+  next_action: Plan pre-frozen water bottles, water fill/refill, greywater pump-out, and water-use limits in camp communications.
+  needs_review: true
+  review_note: Confirm accountable owner and any actual schedule dates before publishing a workback plan.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Water/cold-chain prep: pre-freeze water bottles; schedule water fill/refill and greywater pump-out; keep water-use limits in comms."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-truck-trailer-readiness
+  title: Prepare truck and trailer readiness checklist
+  status: open
+  priority: normal
+  area: transport-reno
+  next_action: Weigh trailer, fill trailer tires, charge tools, fill gas, remove propane tanks post-burn, and assign truck/trailer lead.
+  needs_review: true
+  review_note: Assign truck/trailer lead; no source names a specific owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Truck/trailer readiness: weigh trailer, fill trailer tires, charge tools, fill gas, remove propane tanks post-burn, assign truck/trailer lead."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-fire-fuel-propane-prep
+  title: Prepare fire, fuel, and propane logistics
+  status: open
+  priority: normal
+  area: fuel
+  next_action: Buy fire extinguishers, buy/refill propane tanks, fill gas, and confirm fuel storage location/compliance.
+  needs_review: true
+  review_note: Confirm owner; Martin owns gasoline generally, but this specific task was not assigned.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Fire/fuel/propane prep: buy fire extinguishers, buy/refill propane tanks, fill gas, confirm fuel storage location/compliance."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-reimbursement-expense-process
+  title: Set reimbursement and expense submission process
+  status: open
+  priority: normal
+  area: finance
+  next_action: Define pre-burn expense submission requirements and track reimbursement status.
+  needs_review: true
+  review_note: Assign finance owner for reimbursement process.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Set reimbursement/expense submission process before burn; require pre-burn expenses submitted and track reimbursement status."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-kitchen-wind-stability
+  title: Improve kitchen wind stability
+  status: open
+  priority: normal
+  area: build-shade
+  next_action: Make the kitchen more wind-sturdy with anchoring, ratchets, and/or a vehicle wind barrier.
+  needs_review: true
+  review_note: Assign an owner and confirm the preferred stabilization approach.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Make kitchen more wind-sturdy with anchoring/ratchets and/or vehicle wind barrier."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-shower-system-evaluation
+  title: Evaluate shower system and backup pump needs
+  status: open
+  priority: normal
+  area: water
+  owner: martin
+  next_action: Test the existing shower pump, define a backup pump plan, and evaluate whether a second shower is needed.
+  needs_review: true
+  review_note: Confirm Martin as owner for shower work versus broader build ownership.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Evaluate shower system: test existing pump, backup pump plan, consider second shower."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Martin handles water and gasoline."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-power-tool-readiness
+  title: Prepare power tools, chargers, and inverters
+  status: open
+  priority: normal
+  area: power
+  owner: richie
+  next_action: Inventory inverters and battery chargers, source needed DeWalt 18V XRP or compatible chargers, charge tools, and get impact-driver attachments.
+  needs_review: true
+  review_note: Confirm whether power-tool readiness belongs with Richie or the build/trailer lead.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Power-tool readiness: inventory inverters/battery chargers; get DeWalt 18V XRP charger or charger for existing batteries; charge tools; get impact-driver attachments."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Richie handles power."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-reno-shopping-kitchen-inventory
+  title: Run Reno shopping and kitchen inventory pass
+  status: open
+  priority: normal
+  area: transport-reno
+  next_action: Review kitchen inventory boxes before purchases and restock known shortages such as long lighters and aluminum foil.
+  needs_review: true
+  review_note: Assign shopping owner and coordinate with kitchen-food inventory owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Reno shopping / inventory pass: review kitchen inventory boxes before purchases; restock shortages like long lighters and aluminum foil."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-camp-comfort-chairs-rugs
+  title: Improve camp comfort chairs and rugs
+  status: open
+  priority: low
+  area: interactivity-events
+  next_action: Bring more chairs and replace or add rugs, especially about four more 6x4 rugs for dome, library, and hangout areas.
+  needs_review: true
+  review_note: Assign owner and confirm rug/chair quantities before purchase.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Camp comfort: bring more chairs; replace/add rugs, especially ~4 more 6x4 rugs for dome/library/hangout."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-camper-roster-logistics-fields
+  title: Maintain camper roster and logistics fields
+  status: open
+  priority: normal
+  area: campers
+  owner: helena
+  next_action: Track confirmed status, responsible lead, dues, tickets, vehicle passes, WAP, arrival/departure, sleeping, emails, and first-burn flag.
+  needs_review: true
+  review_note: Confirm Helena as roster owner and decide where the canonical roster lives.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Maintain camper roster and logistics fields: confirmed status, responsible lead, dues, tickets/vehicle passes, WAP, arrival/departure, sleeping, burner email, Docs/calendar email, first-burn flag."
+    - source_type: burnie_inference
+      source_ref: kumaya/people.md
+      source_date: 2026-05-28
+      quote: "Helena: interviewing Gaelle and interview support for Julia."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-placement-application-materials
+  title: Prepare 2026 placement and application materials
+  status: open
+  priority: high
+  area: meetings-admin
+  next_action: Use the 2025 questionnaire as the base for this year's placement and application materials.
+  needs_review: true
+  review_note: Assign placement/application owner and verify submission requirements before drafting final copy.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Prepare this year’s placement/application materials using 2025 questionnaire as base."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-f-and-b-prep-workflow
+  title: Finalize F&B prep workflow
+  status: open
+  priority: normal
+  area: kitchen-food
+  owner: cynthia
+  next_action: Print menus and F&B docs, receive Costco order, execute Reno prep, buy remaining WH/TJ/Costco items, pre-portion meals, and pack fridges/freezers.
+  needs_review: true
+  review_note: Cynthia owner is inferred from kitchen/food area ownership; confirm accountable owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Finalize F&B prep workflow: print menus/F&B docs, receive Costco order, execute Reno prep, buy remaining WH/TJ/Costco items, pre-portion meals, pack fridges/freezers."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Cynthia handles kitchen and food."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-kitchen-consumables-replenishment
+  title: Replenish kitchen consumables
+  status: open
+  priority: normal
+  area: kitchen-food
+  owner: cynthia
+  next_action: Replenish aluminum foil, long lighters, Ziplocks, masking tape, Sharpies, fridge lock, scrubbers, cleaning supplies, measuring tools, tongs, and leftover Tupperware.
+  needs_review: true
+  review_note: Cynthia owner is inferred from kitchen/food area ownership; confirm accountable owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Replenish kitchen consumables: aluminum foil, long lighters, gallon/quart Ziplocks, masking tape/Sharpies, fridge lock, scrubbers, cleaning supplies, measuring tools, serving tongs, leftover Tupperware."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Cynthia handles kitchen and food."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-library-journal-interactivity
+  title: Prepare library and journal interactivity
+  status: open
+  priority: normal
+  area: interactivity-events
+  owner: anton
+  next_action: Crowdsource journal content, update journal email-list pages, assign scanning/uploading, and prepare hanging books and frontage materials.
+  needs_review: true
+  review_note: Anton owner is inferred from interactivity/events area ownership; confirm accountable owner.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Prepare Library/journal interactivity: journal crowdsource, update email-list page in journals, assign scanning/uploading, prepare hanging books/frontage materials."
+    - source_type: burnie_inference
+      source_ref: kumaya/overview.md
+      source_date: 2026-05-28
+      quote: "Anton handles interactivity and events."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-post-burn-feedback-capture-plan
+  title: Plan pre-burn post-burn-feedback capture
+  status: open
+  priority: normal
+  area: meetings-admin
+  next_action: Define before burn how the team will capture and review post-burn feedback on food quantities, kitchen stability, Tea & Tunes, library interactivity, and logistics.
+  needs_review: true
+  review_note: Assign owner for feedback capture and review process.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Plan post-burn feedback capture before burn so the team reviews food quantities, kitchen stability, Tea & Tunes, Sound Oasis/library interactivity, and logistics after the event."
+  created_at: 2026-05-28
+  updated_at: 2026-05-28
+
+- id: task-prebuild-reno-logistics
+  title: Plan pre-build and Reno logistics workback
+  status: open
+  priority: high
+  area: transport-reno
+  next_action: Confirm crew arrival target, Wednesday start plan, trailer packing target, and how to avoid Friday morning packing.
+  needs_review: true
+  review_note: Assign an accountable Reno/pre-build logistics owner and convert target weekdays into real 2026 dates only after schedule confirmation.
+  confidence: medium
+  provenance:
+    - source_type: doc
+      source_ref: kumaya/open-action-items.md
+      source_date: 2026-05-28
+      quote: "Pre-build/Reno logistics: crew in Reno by Tuesday night, start Wednesday morning, trailer fully packed by Thursday night, avoid Friday morning packing."
   created_at: 2026-05-28
   updated_at: 2026-05-28

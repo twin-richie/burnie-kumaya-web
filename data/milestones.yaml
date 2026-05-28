@@ -1,11 +1,38 @@
-- id: milestone-placeholder
-  date: 2026-06-01
-  title: Placeholder seed data replaced
-  type: build
-  area: general
-  description: Target date for replacing placeholder data with richer issue 3 seed data.
-  confidence: low
+- id: milestone-kumaya-committee-2026-05-25
+  date: 2026-05-25
+  title: Kumaya committee meeting
+  type: meeting
+  area: meetings-admin
+  description: Committee meeting snapshot covering attendance, interviews, budget, infrastructure priorities, and Tea & Tunes direction.
+  confidence: high
   provenance:
-    - source_type: manual_seed
-      source_ref: issue-2-placeholder
-      source_date: 2026-05-28
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "This meeting is the best current snapshot of Kumaya’s seasonal planning."
+
+- id: milestone-july-11-fundraiser
+  date: 2026-07-11
+  title: NYC rooftop fundraiser
+  type: event
+  area: finance
+  description: Fundraiser target is $2,000-$3,000 from the July 11 NYC rooftop party.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Fundraiser target is $2,000-$3,000 from the July 11 NYC rooftop party."
+
+- id: milestone-full-dues-due
+  date: 2026-07-15
+  title: Full dues due
+  type: payment
+  area: finance
+  description: Full $900 dues due by July 15; minimum $300 deposits should be collected now.
+  confidence: high
+  provenance:
+    - source_type: meeting
+      source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+      source_date: 2026-05-25
+      quote: "Collect deposits: minimum $300, full $900 due by July 15."

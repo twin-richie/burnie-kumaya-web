@@ -1,0 +1,44 @@
+slug: 2026-05-25-kumaya-committee
+date: 2026-05-25
+title: Kumaya Committee
+attendees:
+  - allan
+  - anton
+  - richie
+  - cynthia
+  - helena
+  - martin
+summary: Committee snapshot covering attendance/departures, applicant interviews, budget/dues/fundraiser targets, equipment upgrades, and Tea & Tunes evolution. This seed keeps the meeting mostly as a source-summary record and links normalized tasks/decisions separately.
+sections:
+  - heading: What this meeting covered
+    body: Attendance and expected departures; applicant interviews and membership decisions; budget increases, dues, and fundraiser targets; equipment upgrades and infrastructure priorities; evolution of Tea & Tunes into a bigger playa experience.
+  - heading: People and interviews
+    body: Julia is effectively approved pending an expectations interview; Gaelle is highly recommended and Helena will interview; Eric is to be interviewed by Martin plus one other person; a person who left a voice message and did not connect personally was rejected.
+  - heading: Departure constraints
+    body: Martin and Perita are leaving Saturday morning for a Panama wedding. Jack may stay until Thursday for the same wedding, creating strike and cleanup complexity.
+action_items:
+  - task-source-art-car
+  - task-generator-strategy
+  - task-freezer-decision
+  - task-interview-gaelle
+  - task-interview-eric
+  - task-interview-julia-expectations
+  - task-collect-deposits-dues
+decisions:
+  - dec-2026-committed-goal-20
+  - dec-2026-dues-budget-targets
+  - dec-original-investors-pay-same
+  - dec-generator-upgrade-priority
+  - dec-freezer-pending
+  - dec-shade-structure-upgrade
+  - dec-tea-tunes-art-car-direction
+  - dec-sound-oasis-library-distinct
+source_refs:
+  - kumaya/meetings/2026-05-25-kumaya-committee.md
+  - https://notes.granola.ai/d/5b67ee94-6001-4735-b0e5-42e1ab73ba08
+confidence: high
+provenance:
+  - source_type: meeting
+    source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
+    source_date: 2026-05-25
+    quote: "This meeting is the best current snapshot of Kumaya’s seasonal planning."
