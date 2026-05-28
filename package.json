@@ -8,7 +8,8 @@
     "start": "next start -p 8080",
     "smoke": "node scripts/smoke-test.mjs",
     "validate:data": "tsx scripts/validate-data.ts",
-    "check": "npm run validate:data && npm run build && node scripts/check-production.mjs"
+    "test:dashboard": "tsx scripts/test-dashboard.ts",
+    "check": "npm run validate:data && npm run test:dashboard && npm run build && node scripts/check-production.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.2.4",

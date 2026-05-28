@@ -7,9 +7,10 @@ if (!response.ok) {
 
 const html = await response.text();
 const required = [
-  "Burnie / Kumaya Planning Hub",
-  "Next.js App Router shell",
-  "No auth · No database · No browser editing",
+  "Kumaya attention dashboard",
+  "read-only",
+  "YAML-backed",
+  "Needs attention",
 ];
 
 for (const text of required) {
