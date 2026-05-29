@@ -50,7 +50,7 @@ export default async function Home() {
               {[
                 { label: "Dashboard", href: "/" },
                 { label: "Tasks", href: "/tasks" },
-                { label: "Areas", href: "#camp-areas" },
+                { label: "Areas", href: "/areas" },
                 { label: "Meetings", href: "#latest-meeting" },
                 { label: "Decisions", href: "#recent-decisions" },
                 { label: "Timeline", href: "#timeline" },
