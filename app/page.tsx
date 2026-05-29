@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AlertTriangle, CalendarClock, ClipboardList, Eye, Flag, ShieldAlert } from "lucide-react";
 
 import { AreaCard, DecisionList, MeetingCard, PlanningBadge, TaskList, TimelineList, UpdateFeed } from "@/components/planning";
@@ -47,17 +48,19 @@ export default async function Home() {
                 Burnie Ops
               </div>
               {[
-                "Dashboard",
-                "Tasks",
-                "Areas",
-                "Meetings",
-                "Decisions",
-                "Timeline",
-                "Updates",
+                { label: "Dashboard", href: "/" },
+                { label: "Tasks", href: "/tasks" },
+                { label: "Areas", href: "#camp-areas" },
+                { label: "Meetings", href: "#latest-meeting" },
+                { label: "Decisions", href: "#recent-decisions" },
+                { label: "Timeline", href: "#timeline" },
+                { label: "Updates", href: "#updates" },
               ].map((item) => (
-                <PlanningBadge key={item} tone={item === "Dashboard" ? "amber" : "stone"}>
-                  {item}
-                </PlanningBadge>
+                <Link key={item.label} href={item.href}>
+                  <PlanningBadge tone={item.label === "Dashboard" ? "amber" : "stone"}>
+                    {item.label}
+                  </PlanningBadge>
+                </Link>
               ))}
             </nav>
           </div>
@@ -119,7 +122,7 @@ export default async function Home() {
           </Card>
 
           <div className="space-y-6">
-            <Card className="border-stone-800 bg-stone-950/75">
+            <Card id="timeline" className="border-stone-800 bg-stone-950/75">
               <CardHeader>
                 <CardTitle className="text-amber-100">Upcoming timeline</CardTitle>
                 <CardDescription>Only sourced future dates are shown.</CardDescription>
@@ -128,7 +131,7 @@ export default async function Home() {
                 <TimelineList milestones={attention.upcomingMilestones.slice(0, 5)} areas={datastore.areas} />
               </CardContent>
             </Card>
-            <Card className="border-stone-800 bg-stone-950/75">
+            <Card id="updates" className="border-stone-800 bg-stone-950/75">
               <CardHeader>
                 <CardTitle className="text-amber-100">Recent updates</CardTitle>
               </CardHeader>
@@ -140,7 +143,7 @@ export default async function Home() {
         </section>
 
         <section className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-          <Card className="border-stone-800 bg-stone-950/75">
+          <Card id="recent-decisions" className="border-stone-800 bg-stone-950/75">
             <CardHeader>
               <CardTitle className="text-amber-100">Recent decisions</CardTitle>
             </CardHeader>
@@ -148,10 +151,10 @@ export default async function Home() {
               <DecisionList decisions={recentDecisions} areas={datastore.areas} />
             </CardContent>
           </Card>
-          {latestMeeting ? <MeetingCard meeting={latestMeeting} /> : null}
+          {latestMeeting ? <div id="latest-meeting"><MeetingCard meeting={latestMeeting} /></div> : null}
         </section>
 
-        <section>
+        <section id="camp-areas">
           <div className="mb-4">
             <h2 className="text-2xl font-semibold text-stone-50">Camp areas</h2>
             <p className="text-sm text-stone-400">Lead ownership, active task counts, high-priority pressure, blockers, and next milestone where available.</p>

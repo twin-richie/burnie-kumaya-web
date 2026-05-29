@@ -19,30 +19,40 @@ function personName(personId: string | undefined, people: Person[] = []) {
   return people.find((person) => person.id === personId)?.name ?? personId;
 }
 
-export function TaskList({ tasks, areas = [], people = [], limit }: { tasks: Task[]; limit?: number } & Lookup) {
+export function TaskList({
+  tasks,
+  areas = [],
+  people = [],
+  limit,
+  showProvenance = false,
+}: { tasks: Task[]; limit?: number; showProvenance?: boolean } & Lookup) {
   const visibleTasks = limit ? tasks.slice(0, limit) : tasks;
   return (
     <div className="space-y-3">
       {visibleTasks.map((task) => (
         <Card key={task.id} className="border-stone-800 bg-stone-950/70 shadow-sm shadow-black/20">
-          <CardContent className="p-4">
+          <CardContent className="space-y-4 p-4">
             <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2">
                   <StatusBadge status={task.status} />
                   <PriorityBadge priority={task.priority} />
+                  <ConfidenceBadge confidence={task.confidence} />
                   <NeedsReviewBadge needsReview={task.needs_review} />
                 </div>
                 <h3 className="text-base font-semibold text-stone-100">{task.title}</h3>
                 {task.next_action ? <p className="text-sm text-stone-300">Next: {task.next_action}</p> : null}
                 {task.review_note ? <p className="text-sm text-red-200/80">Review: {task.review_note}</p> : null}
+                {task.notes ? <p className="text-sm text-stone-500">Notes: {task.notes}</p> : null}
               </div>
               <div className="min-w-48 space-y-1 text-sm text-stone-400 md:text-right">
                 <div>{areaName(task.area, areas)}</div>
                 {task.owner ? <div>Owner: {personName(task.owner, people)}</div> : <div>Owner unassigned</div>}
-                {task.due_date ? <div>Due {task.due_date}</div> : null}
+                {task.due_date ? <div>Due {task.due_date}</div> : <div>No due date</div>}
+                <div className="font-mono text-xs text-stone-600">{task.id}</div>
               </div>
             </div>
+            {showProvenance ? <SourceDisclosure provenance={task.provenance} /> : null}
           </CardContent>
         </Card>
       ))}

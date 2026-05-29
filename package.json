@@ -9,7 +9,8 @@
     "smoke": "node scripts/smoke-test.mjs",
     "validate:data": "tsx scripts/validate-data.ts",
     "test:dashboard": "tsx scripts/test-dashboard.ts",
-    "check": "npm run validate:data && npm run test:dashboard && npm run build && node scripts/check-production.mjs"
+    "test:tasks": "tsx scripts/test-tasks.ts",
+    "check": "npm run validate:data && npm run test:dashboard && npm run test:tasks && npm run build && node scripts/check-production.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.2.4",

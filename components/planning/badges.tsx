@@ -51,7 +51,8 @@ export function ConfidenceBadge({ confidence }: { confidence: Confidence }) {
   return <PlanningBadge tone={tone[confidence]}>confidence: {confidence}</PlanningBadge>;
 }
 
-export function NeedsReviewBadge({ needsReview }: { needsReview: boolean }) {
-  if (!needsReview) return null;
-  return <PlanningBadge tone="red">needs review</PlanningBadge>;
+export function NeedsReviewBadge({ needsReview, showClear = true }: { needsReview: boolean; showClear?: boolean }) {
+  if (needsReview) return <PlanningBadge tone="red">needs review</PlanningBadge>;
+  if (!showClear) return null;
+  return <PlanningBadge tone="green">review clear</PlanningBadge>;
 }
