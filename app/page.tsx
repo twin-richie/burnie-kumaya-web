@@ -51,8 +51,8 @@ export default async function Home() {
                 { label: "Dashboard", href: "/" },
                 { label: "Tasks", href: "/tasks" },
                 { label: "Areas", href: "/areas" },
-                { label: "Meetings", href: "#latest-meeting" },
-                { label: "Decisions", href: "#recent-decisions" },
+                { label: "Meetings", href: "/meetings" },
+                { label: "Decisions", href: "/decisions" },
                 { label: "Timeline", href: "#timeline" },
                 { label: "Updates", href: "#updates" },
               ].map((item) => (

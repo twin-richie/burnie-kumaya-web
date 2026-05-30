@@ -104,7 +104,17 @@ export function TimelineList({ milestones, areas = [] }: { milestones: Milestone
   );
 }
 
-export function DecisionList({ decisions, areas = [] }: { decisions: Decision[]; areas?: Area[] }) {
+export function DecisionList({
+  decisions,
+  areas = [],
+  showProvenance = false,
+  showSupersession = false,
+}: {
+  decisions: Decision[];
+  areas?: Area[];
+  showProvenance?: boolean;
+  showSupersession?: boolean;
+}) {
   return (
     <div className="space-y-3">
       {decisions.map((decision) => (
@@ -114,12 +124,17 @@ export function DecisionList({ decisions, areas = [] }: { decisions: Decision[];
               <PlanningBadge tone="amber">{decision.date}</PlanningBadge>
               {decision.area ? <PlanningBadge>{areaName(decision.area, areas)}</PlanningBadge> : null}
               <ConfidenceBadge confidence={decision.confidence} />
+              {showSupersession && decision.superseded_by ? <PlanningBadge tone="red">superseded by {decision.superseded_by}</PlanningBadge> : null}
+              {showSupersession && decision.supersedes ? <PlanningBadge tone="purple">supersedes {decision.supersedes}</PlanningBadge> : null}
+              {showSupersession && !decision.superseded_by && !decision.supersedes ? <PlanningBadge tone="green">current / no supersession</PlanningBadge> : null}
             </div>
             <div>
               <h3 className="font-semibold text-stone-100">{decision.title}</h3>
               <p className="mt-1 text-sm text-stone-300">{decision.decision}</p>
               {decision.rationale ? <p className="mt-2 text-sm text-stone-500">Rationale: {decision.rationale}</p> : null}
+              <p className="mt-2 font-mono text-xs text-stone-600">{decision.id}</p>
             </div>
+            {showProvenance ? <SourceDisclosure provenance={decision.provenance} /> : null}
           </CardContent>
         </Card>
       ))}
