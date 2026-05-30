@@ -83,20 +83,36 @@ export function AreaCard({ area, people = [], taskCount }: { area: Area; people?
   );
 }
 
-export function TimelineList({ milestones, areas = [] }: { milestones: Milestone[]; areas?: Area[] }) {
+function milestoneTone(type: Milestone["type"]) {
+  const tone: Record<Milestone["type"], Parameters<typeof PlanningBadge>[0]["tone"]> = {
+    deadline: "red",
+    event: "purple",
+    build: "amber",
+    logistics: "blue",
+    payment: "green",
+    meeting: "stone",
+  };
+  return tone[type];
+}
+
+export function TimelineList({ milestones, areas = [], showProvenance = false }: { milestones: Milestone[]; areas?: Area[]; showProvenance?: boolean }) {
   return (
     <div className="space-y-3">
       {milestones.map((milestone) => (
         <div key={milestone.id} className="grid gap-3 rounded-xl border border-stone-800 bg-stone-950/70 p-4 md:grid-cols-[8rem_1fr]">
           <time className="font-mono text-sm text-amber-200">{milestone.date}</time>
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <PlanningBadge tone="blue">{milestone.type}</PlanningBadge>
+              <PlanningBadge tone={milestoneTone(milestone.type)}>{milestone.type}</PlanningBadge>
               {milestone.area ? <PlanningBadge>{areaName(milestone.area, areas)}</PlanningBadge> : null}
               <ConfidenceBadge confidence={milestone.confidence} />
             </div>
-            <h3 className="font-semibold text-stone-100">{milestone.title}</h3>
-            {milestone.description ? <p className="text-sm text-stone-400">{milestone.description}</p> : null}
+            <div>
+              <h3 className="font-semibold text-stone-100">{milestone.title}</h3>
+              {milestone.description ? <p className="mt-1 text-sm text-stone-400">{milestone.description}</p> : null}
+              <p className="mt-2 font-mono text-xs text-stone-600">{milestone.id}</p>
+            </div>
+            {showProvenance ? <SourceDisclosure provenance={milestone.provenance} /> : null}
           </div>
         </div>
       ))}
@@ -170,7 +186,7 @@ export function MeetingCard({ meeting }: { meeting: Meeting }) {
   );
 }
 
-export function UpdateFeed({ updates }: { updates: Update[] }) {
+export function UpdateFeed({ updates, showProvenance = false }: { updates: Update[]; showProvenance?: boolean }) {
   return (
     <div className="space-y-4">
       {updates.map((update) => (
@@ -184,14 +200,20 @@ export function UpdateFeed({ updates }: { updates: Update[] }) {
             <div>
               <h3 className="font-semibold text-stone-100">{update.title}</h3>
               <p className="mt-1 text-sm text-stone-300">{update.summary}</p>
+              <p className="mt-2 font-mono text-xs text-stone-600">{update.id}</p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {update.changed_objects.map((object) => (
-                <PlanningBadge key={`${update.id}-${object.type}-${object.id}`} tone="blue">
-                  {object.type}: {object.id}
-                </PlanningBadge>
-              ))}
+            <div className="space-y-2">
+              {update.changed_objects.length ? update.changed_objects.map((object) => (
+                <div key={`${update.id}-${object.type}-${object.id}`} className="rounded-lg border border-stone-800 bg-stone-950/60 p-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <PlanningBadge tone="blue">{object.type}</PlanningBadge>
+                    <span className="font-mono text-xs text-stone-300">{object.id}</span>
+                  </div>
+                  <p className="mt-2 text-sm text-stone-400">{object.change}</p>
+                </div>
+              )) : <p className="rounded-lg border border-dashed border-stone-800 bg-stone-950/60 p-3 text-sm text-stone-500">No changed object references recorded.</p>}
             </div>
+            {showProvenance ? <SourceDisclosure provenance={update.provenance} /> : null}
           </CardContent>
         </Card>
       ))}

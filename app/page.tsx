@@ -53,8 +53,8 @@ export default async function Home() {
                 { label: "Areas", href: "/areas" },
                 { label: "Meetings", href: "/meetings" },
                 { label: "Decisions", href: "/decisions" },
-                { label: "Timeline", href: "#timeline" },
-                { label: "Updates", href: "#updates" },
+                { label: "Timeline", href: "/timeline" },
+                { label: "Updates", href: "/updates" },
               ].map((item) => (
                 <Link key={item.label} href={item.href}>
                   <PlanningBadge tone={item.label === "Dashboard" ? "amber" : "stone"}>

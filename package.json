@@ -12,7 +12,8 @@
     "test:tasks": "tsx scripts/test-tasks.ts",
     "test:areas": "tsx scripts/test-areas.ts",
     "test:records": "tsx scripts/test-records.ts",
-    "check": "npm run validate:data && npm run test:dashboard && npm run test:tasks && npm run test:areas && npm run test:records && npm run build && node scripts/check-production.mjs"
+    "test:timeline": "tsx scripts/test-timeline.ts",
+    "check": "npm run validate:data && npm run test:dashboard && npm run test:tasks && npm run test:areas && npm run test:records && npm run test:timeline && npm run build && node scripts/check-production.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.2.4",
