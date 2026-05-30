@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.burnie.kumaya.web</string>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/twin/Context/burnie/web</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/twin/Context/burnie/web/scripts/start-production.sh</string>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>NODE_ENV</key>
+    <string>production</string>
+    <key>PORT</key>
+    <string>8080</string>
+    <key>PATH</key>
+    <string>/Users/twin/.nvm/versions/node/v22.22.2/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/twin/Context/burnie/web/logs/launchd.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/twin/Context/burnie/web/logs/launchd.err.log</string>
+</dict>
+</plist>

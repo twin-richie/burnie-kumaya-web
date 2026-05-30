@@ -4,8 +4,9 @@
 
 Status: draft approved from user interview
 Date: 2026-05-28
-Current site entrypoint: /Users/twin/Context/burnie/web/server.js
+Current site entrypoint: /Users/twin/Context/burnie/web app served by `npm run start` on port 8080
 Target app root: /Users/twin/Context/burnie/web
+Retired prototype: /Users/twin/Context/burnie/web/archive/server.prototype.js
 
 ## 1. Goal
 
