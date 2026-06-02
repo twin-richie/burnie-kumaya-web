@@ -30,11 +30,8 @@ export default async function TimelinePage() {
               <CardTitle>Upcoming</CardTitle>
               <CardDescription className="max-w-[75ch]">Milestones from Monday, May 25 to September 6. Today is marked on the rail; hover markers for the date and event name.</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent>
               <GanttTimeline rows={ganttRows} areas={datastore.areas} today={today} />
-              <div data-timeline-upcoming-list="true">
-                {grouped.upcoming.length ? <TimelineList milestones={grouped.upcoming} areas={datastore.areas} showProvenance /> : <EmptyPanel label="upcoming" />}
-              </div>
             </CardContent>
           </Card>
         </section>

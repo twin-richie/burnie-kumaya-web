@@ -429,8 +429,11 @@ async function assertQueuedDesignUpdates() {
   if (!timelineCombinedSection) {
     throw new Error("Timeline page should combine the Gantt rail and upcoming milestones into one Upcoming section");
   }
-  if (!timelineCombinedSection.includes('data-gantt-overview-style="true"') || !timelineCombinedSection.includes('data-timeline-upcoming-list="true"')) {
-    throw new Error("Combined Upcoming section should contain both the Gantt timeline and upcoming milestone list");
+  if (!timelineCombinedSection.includes('data-gantt-overview-style="true"')) {
+    throw new Error("Upcoming section should contain the Gantt timeline");
+  }
+  if (timelineCombinedSection.includes('data-timeline-upcoming-list="true"')) {
+    throw new Error("Timeline page should not render a duplicate upcoming milestone list below the Gantt cards");
   }
   const timelineMilestoneWithSources = timelineHtml.match(/<div[^>]*data-milestone-item="true"[\s\S]*?<\/div>\s*<\/div>/)?.[0] ?? "";
   if (!timelineMilestoneWithSources) {

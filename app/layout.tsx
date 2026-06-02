@@ -6,9 +6,6 @@ export const metadata: Metadata = {
   description: "Source-backed planning overview for the Kumaya Burning Man camp, maintained by Burnie.",
 };
 
-// The planning hub is served from this Mac and should reflect the current YAML
-// source files on each request, not a static snapshot from the last build.
-export const dynamic = "force-dynamic";
 
 const themeScript = `
 (function () {
