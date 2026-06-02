@@ -172,8 +172,7 @@ export function GanttTimeline({ rows, areas = [], compact = false, today }: { ro
           ))}
         </div>
         <div className="mt-2 flex justify-between text-xs font-medium text-muted-foreground">
-          <span>May 25</span>
-          <span>Phase markers</span>
+          <span>First meeting</span>
           <span className="text-primary">Burn week</span>
         </div>
       </div>

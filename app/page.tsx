@@ -82,7 +82,7 @@ function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilesto
         ))}
       </div>
       <div className="mt-2 flex justify-between text-xs font-medium text-muted-foreground">
-        <span>May 25</span>
+        <span>First meeting</span>
         <span className="text-primary">Burn week</span>
       </div>
     </div>

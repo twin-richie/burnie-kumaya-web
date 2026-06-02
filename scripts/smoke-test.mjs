@@ -352,6 +352,9 @@ async function assertCritiqueFixes() {
   if (!timelineHtml.includes('data-gantt-today-marker="true"') || !timelineHtml.includes("Today · Jun 02")) {
     throw new Error("Timeline should mark today on the rail with a hover label");
   }
+  if (!timelineHtml.includes("First meeting") || timelineHtml.includes("Phase markers")) {
+    throw new Error("Timeline rail should label the season start as First meeting and omit the middle Phase markers label");
+  }
   for (const path of ["/", "/timeline", "/updates"]) {
     const html = await fetchHtml(path);
     if (!html.includes("max-w-[75ch]") && !html.includes("max-w-[70ch]")) {
