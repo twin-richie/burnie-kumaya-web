@@ -77,11 +77,8 @@ async function assertOverviewLatestMeetingCard() {
     throw new Error("Overview latest meeting should render as a compact summary preview");
   }
   const meetingSummaryOpen = meetingsSection.match(/<article[^>]*data-meeting-summary="true"[^>]*>/)?.[0] ?? "";
-  for (const className of ["rounded-xl", "bg-card", "p-5", "shadow-xs"]) {
-    if (!meetingSummaryOpen.includes(className)) throw new Error(`Overview latest meeting should use camp-area tile styling: missing ${className}`);
-  }
-  if (meetingSummaryOpen.includes("border")) {
-    throw new Error("Overview latest meeting should use camp-area tile styling without border chrome");
+  for (const className of ["rounded-xl", "border", "border-border", "bg-card", "p-5", "shadow-xs"]) {
+    if (!meetingSummaryOpen.includes(className)) throw new Error(`Overview latest meeting should use agenda-card border/shadow styling: missing ${className}`);
   }
   if (meetingsSection.includes("What this meeting covered") || meetingsSection.includes("<h4")) {
     throw new Error("Overview latest meeting should avoid nested section headings in the compact preview");
@@ -266,11 +263,8 @@ async function assertAreasPageGrid() {
     if (!areaLink.includes('href="/areas/')) {
       throw new Error("Clicking an area card should navigate to its detail page");
     }
-    for (const className of ["rounded-xl", "bg-card", "p-5", "shadow-xs", "hover:bg-muted/50"]) {
-      if (!areaLink.includes(className)) throw new Error(`Areas page cards should match overview area tile styling: missing ${className}`);
-    }
-    if (areaLink.includes("border")) {
-      throw new Error("Areas page cards should match overview area tiles without border dividers");
+    for (const className of ["rounded-xl", "border", "border-border", "bg-card", "p-5", "shadow-xs", "hover:bg-muted/50"]) {
+      if (!areaLink.includes(className)) throw new Error(`Areas page cards should match agenda-card border/shadow styling: missing ${className}`);
     }
   }
   if (!html.includes('data-area-card-meta="true"') || html.includes("needs review") || html.includes("confidence:")) {
@@ -302,11 +296,8 @@ async function assertCritiqueFixes() {
     throw new Error(`Tasks overview attention summary should render four area-style cards, found ${attentionCards.length}`);
   }
   for (const card of attentionCards) {
-    for (const className of ["rounded-xl", "bg-card", "p-5", "shadow-xs", "hover:bg-muted/50"]) {
-      if (!card.includes(className)) throw new Error(`Attention card should use camp-area tile styling: missing ${className}`);
-    }
-    if (card.includes("border")) {
-      throw new Error("Attention card should use camp-area tile styling without border chrome");
+    for (const className of ["rounded-xl", "border", "border-border", "bg-card", "p-5", "shadow-xs", "hover:bg-muted/50"]) {
+      if (!card.includes(className)) throw new Error(`Attention card should use agenda-card border/shadow styling: missing ${className}`);
     }
   }
   const meetingsSection = sectionBetween(overviewHtml, "meetings", "decisions");
@@ -324,7 +315,7 @@ async function assertCritiqueFixes() {
     throw new Error("Overview decisions should render as the standard divided decision list");
   }
   if (decisionsSection.includes("rounded-xl bg-card/30 p-4")) {
-    throw new Error("Overview decisions should not use the disliked card treatment");
+    throw new Error("Borderless decision cards should not use the old translucent card treatment");
   }
   const tasksHtml = await fetchHtml("/tasks");
   if (!tasksHtml.includes('data-task-risk-rail="true"')) {
@@ -388,8 +379,8 @@ async function assertQueuedDesignUpdates() {
     throw new Error("Overview Area section should mark each tile for smoke coverage");
   }
   for (const tile of overviewAreaCards) {
-    if (tile.includes("border")) {
-      throw new Error("Overview Area tiles should not have borders");
+    for (const className of ["rounded-xl", "border", "border-border", "bg-card", "p-5", "shadow-xs"]) {
+      if (!tile.includes(className)) throw new Error(`Overview Area tiles should use agenda-card border/shadow styling: missing ${className}`);
     }
   }
 

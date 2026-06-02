@@ -21,7 +21,7 @@ export default async function AreasPage() {
             return (
               <Link
                 key={area.slug}
-                className="group flex min-h-48 flex-col justify-between rounded-xl bg-card p-5 shadow-xs transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="group flex min-h-48 flex-col justify-between rounded-xl border border-border bg-card p-5 shadow-xs transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 href={`/areas/${area.slug}`}
                 data-area-card="true"
               >

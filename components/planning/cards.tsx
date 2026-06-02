@@ -218,7 +218,7 @@ export function DecisionList({
     <ul className={variant === "borderless" ? "space-y-5" : "divide-y divide-border/80"} data-decision-list={variant}>
       {decisions.map((decision) => (
         <li key={decision.id} className="py-5 first:pt-0 last:pb-0">
-          <div className={variant === "borderless" ? "space-y-3 rounded-xl bg-card/30 p-4" : "space-y-3"}>
+          <div className={variant === "borderless" ? "space-y-3 rounded-xl border border-border bg-card p-4 shadow-xs" : "space-y-3"}>
             <div>
               <h3 className="text-lg font-semibold leading-snug text-foreground sm:text-xl" data-decision-title="true">{decision.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{decision.decision}</p>
@@ -270,7 +270,7 @@ export function NextLeadsAgendaCard({ agenda }: { agenda: NextLeadsAgenda }) {
 export function MeetingCard({ meeting, variant = "card" }: { meeting: Meeting; variant?: "card" | "summary" }) {
   if (variant === "summary") {
     return (
-      <article className="w-full rounded-xl bg-card p-5 shadow-xs" data-meeting-summary="true">
+      <article className="w-full rounded-xl border border-border bg-card p-5 shadow-xs" data-meeting-summary="true">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
           <h3 className="text-lg font-semibold text-foreground">{meeting.title}</h3>
           <time className="shrink-0 text-sm text-muted-foreground opacity-60">{formatDisplayDate(meeting.date)}</time>

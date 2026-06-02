@@ -129,7 +129,7 @@ function AttentionDashboard({ attention, latestUpdate }: { attention: ReturnType
       </div>
       <div className="grid gap-3 md:grid-cols-4">
         {cards.map((card) => (
-          <Link key={card.key} href={card.href} data-attention-risk-link={card.key} className="ring-focus group flex min-h-36 flex-col justify-between rounded-xl bg-card p-5 shadow-xs transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+          <Link key={card.key} href={card.href} data-attention-risk-link={card.key} className="ring-focus group flex min-h-36 flex-col justify-between rounded-xl border border-border bg-card p-5 shadow-xs transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
             <div className="flex items-baseline justify-between gap-3">
               <span className="text-sm font-medium text-foreground">{card.label}</span>
               <span className="text-2xl font-semibold tabular-nums text-primary">{card.value}</span>
@@ -210,7 +210,7 @@ export default async function Home() {
                 key={area.slug}
                 href={`/areas/${area.slug}`}
                 data-overview-area-card="true"
-                className="group flex min-h-48 flex-col justify-between rounded-xl bg-card p-5 shadow-xs transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="group flex min-h-48 flex-col justify-between rounded-xl border border-border bg-card p-5 shadow-xs transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 <div>
                   <h3 className="text-lg font-semibold text-foreground group-hover:text-primary">{area.name}</h3>
