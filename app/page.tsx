@@ -57,7 +57,7 @@ function Section({ id, alt, children }: { id: string; alt?: boolean; children: R
 function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilestoneRows>; today: string }) {
   const toBurn = Math.max(1, daysBetween(today, MAN_BURN_DATE));
   const pct = (date: string) => Math.max(0, Math.min(100, (daysBetween(today, date) / toBurn) * 100));
-  const burnStart = pct("2026-08-30");
+  const burnStart = pct("2026-08-31");
   const dayGrid = Array.from({ length: toBurn + 1 }, (_, day) => ({ day, offsetPercent: Math.round((day / toBurn) * 10000) / 100 }));
 
   return (
@@ -70,7 +70,7 @@ function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilesto
         </div>
         <div className="absolute inset-y-[-3px] rounded-full bg-primary/30 ring-1 ring-primary/40" style={{ left: `${burnStart}%`, right: 0 }} title="Burn week" />
         {rows.map((row) => (
-          <div key={row.id} className="group absolute top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ left: `${row.offsetPercent}%` }}>
+          <div key={row.id} className="group absolute top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ left: `${row.offsetPercent}%` }} title={`${row.title} · ${fmtDate(row.date)}`} aria-label={`${row.title} · ${fmtDate(row.date)}`}>
             <span className={row.isManBurn ? "block size-3 rounded-full border-2 border-card bg-primary shadow-sm" : "block size-3 rounded-full border-2 border-card bg-[hsl(var(--terracotta))] shadow-sm"} />
             <span className="pointer-events-none absolute -top-8 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-popover px-2 py-1 text-xs opacity-0 shadow-md transition-opacity group-hover:opacity-100">
               {fmtDate(row.date)} · {row.title}
@@ -79,8 +79,8 @@ function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilesto
         ))}
       </div>
       <div className="mt-2 flex justify-between text-xs font-medium text-muted-foreground">
-        <span>Today · {fmtDate(today)}</span>
-        <span className="text-primary">Man burns · {fmtDate(MAN_BURN_DATE)}</span>
+        <span>Today</span>
+        <span className="text-primary">Burn week</span>
       </div>
     </div>
   );
@@ -160,7 +160,7 @@ export default async function Home() {
       <SiteHeader sections={sections} />
 
       <Section id="timeline">
-        <SectionHeader eyebrow="Timeline" icon={CalendarClock} count={`${upcomingRows.length} upcoming`} title="Milestones from now through the Man Burn" blurb="Key dates plotted from today to September 5. Pre-build in Reno, the burn week, and the Man Burn are marked. Task due dates surface here too." href="/timeline" />
+        <SectionHeader eyebrow="Timeline" icon={CalendarClock} count={`${upcomingRows.length} upcoming`} title="Milestones from now through the burn" blurb="Key dates plotted from today to September 6. Hover markers for the date and event name. Task due dates surface here too." href="/timeline" />
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
           <Card className="shadow-xs">
             <CardContent className="p-6">
@@ -169,11 +169,6 @@ export default async function Home() {
                 <span className="text-sm tabular-nums text-primary">{toBurn} days left</span>
               </div>
               <SeasonRail rows={ganttRows} today={today} />
-              <div className="mt-4 grid grid-cols-3 gap-3 border-t border-border pt-4 text-center">
-                <div><div className="text-xl font-semibold tabular-nums">{fmtDate("2026-08-25")}</div><div className="text-xs uppercase tracking-wide text-muted-foreground">Reno pre-build</div></div>
-                <div><div className="text-xl font-semibold tabular-nums">{fmtDate("2026-08-30")}</div><div className="text-xs uppercase tracking-wide text-muted-foreground">Gates open</div></div>
-                <div><div className="text-xl font-semibold tabular-nums text-primary">{fmtDate(MAN_BURN_DATE)}</div><div className="text-xs uppercase tracking-wide text-muted-foreground">Man burns</div></div>
-              </div>
             </CardContent>
           </Card>
           <div>

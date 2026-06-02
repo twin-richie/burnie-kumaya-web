@@ -37,9 +37,9 @@
       source_date: 2026-05-25
       quote: "Collect deposits: minimum $300, full $900 due by July 15."
 
-- id: milestone-pre-build-starts-2026
+- id: milestone-pre-build-2026
   date: 2026-08-25
-  title: Pre-build starts
+  title: Pre-build
   type: build
   area: build-shade
   description: Pre-build runs August 25-28, 2026.
@@ -50,35 +50,9 @@
       source_date: 2026-06-02
       quote: "pre-build... should start on August 25 and end on August 28"
 
-- id: milestone-pre-build-ends-2026
+- id: milestone-build-2026
   date: 2026-08-28
-  title: Pre-build ends
-  type: build
-  area: build-shade
-  description: Pre-build runs August 25-28, 2026; build begins August 28.
-  confidence: high
-  provenance:
-    - source_type: user_instruction
-      source_ref: telegram:richie:2026-06-02
-      source_date: 2026-06-02
-      quote: "pre-build... should start on August 25 and end on August 28"
-
-- id: milestone-build-starts-2026
-  date: 2026-08-28
-  title: Build starts
-  type: build
-  area: build-shade
-  description: Build runs August 28-30, 2026.
-  confidence: high
-  provenance:
-    - source_type: user_instruction
-      source_ref: telegram:richie:2026-06-02
-      source_date: 2026-06-02
-      quote: "Build starts Aug 28 and ends Aug 30."
-
-- id: milestone-build-ends-2026
-  date: 2026-08-30
-  title: Build ends
+  title: Build
   type: build
   area: build-shade
   description: Build runs August 28-30, 2026.

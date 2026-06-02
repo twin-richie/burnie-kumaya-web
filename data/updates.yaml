@@ -70,20 +70,14 @@
 - id: update-2026-06-02-season-dates
   date: 2026-06-02
   title: Updated 2026 pre-build, build, and burn dates
-  summary: Added explicit timeline milestones for pre-build running August 25-28, build running August 28-30, and the burn running August 31-September 6.
+  summary: Added explicit timeline milestones for pre-build running August 25-28, build running August 28-30, and the burn running August 31-September 6. The timeline shows one marker per phase start plus the burn-end marker.
   changed_objects:
     - type: milestone
-      id: milestone-pre-build-starts-2026
-      change: Added pre-build start date of August 25, 2026.
+      id: milestone-pre-build-2026
+      change: Added pre-build marker for August 25, 2026, with August 25-28 captured in the description.
     - type: milestone
-      id: milestone-pre-build-ends-2026
-      change: Added pre-build end date of August 28, 2026.
-    - type: milestone
-      id: milestone-build-starts-2026
-      change: Added build start date of August 28, 2026.
-    - type: milestone
-      id: milestone-build-ends-2026
-      change: Added build end date of August 30, 2026.
+      id: milestone-build-2026
+      change: Added build marker for August 28, 2026, with August 28-30 captured in the description.
     - type: milestone
       id: milestone-burn-starts-2026
       change: Added burn start date of August 31, 2026.

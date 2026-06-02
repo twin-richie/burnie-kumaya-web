@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 const base = process.env.SMOKE_URL ?? "http://127.0.0.1:8080";
 
 const checks = [
-  { path: "/", required: ["Milestones from now through the Man Burn"] },
+  { path: "/", required: ["Milestones from now through the burn"] },
   { path: "/tasks", required: ["Add filter", "Task name", "Owner", "Priority", "Due date", "Review?"] },
   { path: "/areas", required: ["Meetings and Admin", "Finance and Dues"] },
   { path: "/meetings", required: ["Kumaya Committee"] },
@@ -161,7 +161,7 @@ async function assertAreaNaming() {
 async function assertOverviewSectionHeaders() {
   const html = await fetchHtml("/");
   const expectations = [
-    { id: "timeline", href: "/timeline", name: "Timeline", subhead: "Milestones from now through the Man Burn", removedBlurb: "Key dates plotted from today to September 5", oldCta: "Open timeline" },
+    { id: "timeline", href: "/timeline", name: "Timeline", subhead: "Milestones from now through the burn", removedBlurb: "Key dates plotted from today to September 5", oldCta: "Open timeline" },
     { id: "tasks", href: "/tasks", name: "Tasks", subhead: "Open work, sorted by what&#x27;s due soonest", removedBlurb: "The ten most pressing items", oldCta: "Open task dashboard" },
     { id: "areas", href: "/areas", name: "Area", subhead: "The planning domains and who leads them", removedBlurb: "Each area carries a lead", oldCta: "Open areas" },
     { id: "meetings", href: "/meetings", name: "Meetings", subhead: "Committee notes, kept source-true", removedBlurb: "Meeting records with summaries", oldCta: "Open meetings" },
@@ -395,15 +395,20 @@ async function assertQueuedDesignUpdates() {
   }
   const ganttAxis = timelineHtml.match(/<div[^>]*data-gantt-date-axis="true"[\s\S]*?<\/div>\s*<div class="relative h-1\.5 rounded-full bg-border"/)?.[0] ?? "";
   if (!ganttAxis) {
-    throw new Error("Timeline Gantt view should render a date axis above the x-axis rail");
+    throw new Error("Timeline Gantt view should keep an accessible date-axis note above the x-axis rail");
   }
-  for (const label of ["Jul 11", "Jul 15", "Sep 06"]) {
-    if (!ganttAxis.includes(label)) {
-      throw new Error(`Timeline Gantt date axis should include ${label}`);
+  if (!ganttAxis.includes("Timeline dates are shown in marker hover labels") || timelineHtml.includes('date-tick')) {
+    throw new Error("Timeline Gantt date labels should be hidden from the axis and shown via marker hover labels");
+  }
+  for (const hoverLabel of ["Pre-build · Aug 25", "Build · Aug 28", "Burn starts · Aug 31", "Burn ends · Sep 06"]) {
+    if (!timelineHtml.includes(hoverLabel)) {
+      throw new Error(`Timeline marker hover labels should include event and date: ${hoverLabel}`);
     }
   }
-  if (!ganttAxis.includes("absolute") || !ganttAxis.includes("left:")) {
-    throw new Error("Timeline Gantt date axis labels should be positioned across the x-axis");
+  for (const duplicatePhase of ["Pre-build ends", "Build ends"]) {
+    if (timelineHtml.includes(duplicatePhase)) {
+      throw new Error(`Timeline should not render duplicate phase boundary milestone: ${duplicatePhase}`);
+    }
   }
   if (!timelineHtml.includes('data-gantt-week-grid="true"') || !timelineHtml.includes('data-gantt-week-tick="true"')) {
     throw new Error("Timeline Gantt view should render weekly tick marks instead of phase-background spans");

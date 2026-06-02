@@ -139,7 +139,6 @@ function formatShortDate(date: string) {
 }
 
 export function GanttTimeline({ rows, areas = [], compact = false }: { rows: GanttMilestoneRow[]; areas?: Area[]; compact?: boolean }) {
-  const axisRows = rows.map((row) => ({ id: row.id, date: row.date, label: formatShortDate(row.date), offsetPercent: row.offsetPercent }));
   const totalDays = Math.max(1, rows.at(-1)?.daysFromStart ?? 1);
   const weekTicks = Array.from({ length: Math.floor(totalDays / 7) + 1 }, (_, week) => {
     const day = week * 7;
@@ -149,13 +148,7 @@ export function GanttTimeline({ rows, areas = [], compact = false }: { rows: Gan
   return (
     <div className="space-y-5" data-gantt-overview-style="true">
       <div className="px-1 pb-2 pt-9">
-        <div className="relative mb-7 h-4" data-gantt-date-axis="true">
-          {axisRows.map((tick) => (
-            <div key={`${tick.id}-date-tick`} className="absolute top-0 -translate-x-1/2 text-xs font-medium tabular-nums text-muted-foreground" style={{ left: `${tick.offsetPercent}%` }}>
-              <span className="whitespace-nowrap">{tick.label}</span>
-            </div>
-          ))}
-        </div>
+        <div className="sr-only" data-gantt-date-axis="true">Timeline dates are shown in marker hover labels.</div>
         <div className="relative h-1.5 rounded-full bg-border">
           <div className="pointer-events-none absolute inset-y-[-18px] inset-x-0" data-gantt-week-grid="true">
             {weekTicks.map((tick) => (
@@ -164,7 +157,7 @@ export function GanttTimeline({ rows, areas = [], compact = false }: { rows: Gan
           </div>
           <div className="absolute inset-y-[-3px] rounded-full bg-primary/30 ring-1 ring-primary/40" style={{ left: `${Math.max(0, Math.min(100, rows.find((row) => row.date >= "2026-08-30")?.offsetPercent ?? 92))}%`, right: 0 }} title="Burn week" />
           {rows.map((row) => (
-            <div key={`${row.id}-marker`} className="group absolute top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ left: `${row.offsetPercent}%` }}>
+            <div key={`${row.id}-marker`} className="group absolute top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ left: `${row.offsetPercent}%` }} title={`${row.title} · ${formatShortDate(row.date)}`} aria-label={`${row.title} · ${formatShortDate(row.date)}`}>
               <span className={row.isManBurn ? "block size-3 rounded-full border-2 border-card bg-primary shadow-sm" : "block size-3 rounded-full border-2 border-card bg-[hsl(var(--terracotta))] shadow-sm"} />
               <span className="pointer-events-none absolute -top-8 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-md border border-border bg-popover px-2 py-1 text-xs opacity-0 shadow-md transition-opacity group-hover:opacity-100">
                 {formatShortDate(row.date)} · {row.title}
@@ -174,8 +167,8 @@ export function GanttTimeline({ rows, areas = [], compact = false }: { rows: Gan
         </div>
         <div className="mt-2 flex justify-between text-xs font-medium text-muted-foreground">
           <span>Today</span>
-          <span>Pre-build</span>
-          <span className="text-primary">Burn week · Man burns {formatDisplayDate("2026-09-05")}</span>
+          <span>Phase markers</span>
+          <span className="text-primary">Burn week</span>
         </div>
       </div>
       <div className="space-y-2">

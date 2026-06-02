@@ -23,7 +23,7 @@ export default async function TimelinePage() {
           <Card className="shadow-xs" data-timeline-panel="true">
             <CardHeader>
               <CardTitle>Upcoming</CardTitle>
-              <CardDescription className="max-w-[75ch]">Milestones from now to September 5, with the rail and upcoming list kept together.</CardDescription>
+              <CardDescription className="max-w-[75ch]">Milestones from now to September 6. Hover rail markers for the date and event name.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <GanttTimeline rows={ganttRows} areas={datastore.areas} />
