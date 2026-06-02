@@ -1,5 +1,21 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {};
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const repositoryName = "burnie-kumaya-web";
+
+const nextConfig: NextConfig = {
+  allowedDevOrigins: ["basically-telecom-shoot-geographical.trycloudflare.com"],
+  ...(isGitHubPages
+    ? {
+        output: "export" as const,
+        basePath: `/${repositoryName}`,
+        assetPrefix: `/${repositoryName}/`,
+        trailingSlash: true,
+        images: {
+          unoptimized: true,
+        },
+      }
+    : {}),
+};
 
 export default nextConfig;

@@ -4,18 +4,18 @@ import type { Confidence, Task } from "@/lib/types";
 
 type BadgeTone = "red" | "amber" | "blue" | "green" | "stone" | "purple";
 
-const toneClass: Record<BadgeTone, string> = {
-  red: "border-red-500/40 bg-red-500/10 text-red-200",
-  amber: "border-amber-500/40 bg-amber-500/10 text-amber-200",
-  blue: "border-sky-500/40 bg-sky-500/10 text-sky-200",
-  green: "border-emerald-500/40 bg-emerald-500/10 text-emerald-200",
-  stone: "border-stone-500/40 bg-stone-500/10 text-stone-200",
-  purple: "border-violet-500/40 bg-violet-500/10 text-violet-200",
+const variantForTone: Record<BadgeTone, "default" | "secondary" | "outline" | "destructive"> = {
+  red: "destructive",
+  amber: "secondary",
+  blue: "secondary",
+  green: "outline",
+  stone: "outline",
+  purple: "secondary",
 };
 
 export function PlanningBadge({ children, tone = "stone", className }: { children: React.ReactNode; tone?: BadgeTone; className?: string }) {
   return (
-    <Badge variant="outline" className={cn("rounded-full font-medium", toneClass[tone], className)}>
+    <Badge variant={variantForTone[tone]} className={cn("font-medium", className)}>
       {children}
     </Badge>
   );
@@ -48,7 +48,7 @@ export function ConfidenceBadge({ confidence }: { confidence: Confidence }) {
     medium: "amber",
     low: "red",
   };
-  return <PlanningBadge tone={tone[confidence]}>confidence: {confidence}</PlanningBadge>;
+  return <PlanningBadge tone={tone[confidence]} className="opacity-30">confidence: {confidence}</PlanningBadge>;
 }
 
 export function NeedsReviewBadge({ needsReview, showClear = true }: { needsReview: boolean; showClear?: boolean }) {

@@ -51,7 +51,7 @@ assert.equal(taskDueState(tasks[1], asOf), "no-date");
 assert.equal(taskDueState(tasks[2], asOf), "dated");
 assert.ok(taskAttentionScore(tasks[0], asOf) > taskAttentionScore(tasks[2], asOf));
 
-const filters = parseTaskFilters({ status: "open", owner: "unowned", review: "needs-review", sort: "priority" });
+const filters = parseTaskFilters({ status: "open", owner: "unowned", review: "needs-review", sort: "priority-asc" });
 assert.equal(activeFilterCount(filters), 3);
 assert.equal(filterTasks(tasks, filters, asOf).map((task) => task.id).join(","), "unowned-review");
 
@@ -59,5 +59,7 @@ assert.equal(filterTasks(tasks, parseTaskFilters({ due: "overdue" }), asOf).leng
 assert.equal(filterTasks(tasks, parseTaskFilters({ area: "events", confidence: "low" }), asOf)[0]?.id, "future-low");
 assert.equal(filterTasks(tasks, parseTaskFilters({ owner: "unowned" }), asOf)[0]?.id, "unowned-review");
 assert.equal(parseTaskFilters({ status: "bogus", sort: "bogus" }).sort, "attention");
+assert.equal(parseTaskFilters({ sort: "priority" }).sort, "priority-asc");
+assert.equal(filterTasks(tasks, parseTaskFilters({ sort: "title-desc" }), asOf)[0]?.id, "unowned-review");
 
 console.log("Task filter helper tests passed");

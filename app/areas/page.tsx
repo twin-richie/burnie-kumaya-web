@@ -1,70 +1,44 @@
 import Link from "next/link";
-import { MapPinned } from "lucide-react";
 
-import { AreaCard, PlanningBadge } from "@/components/planning";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAreaTaskCounts } from "@/lib/areas";
+import { CategoryStats, SiteFooter, SiteHeader } from "@/components/planning";
 import { loadDatastore } from "@/lib/data";
 
-export const metadata = {
-  title: "Areas · Burnie / Kumaya Planning Hub",
-};
+export const metadata = { title: "Areas · Burnie / Kumaya Planning Hub" };
 
 export default async function AreasPage() {
   const datastore = await loadDatastore();
+  const leadCount = datastore.areas.filter((area) => area.lead).length;
 
   return (
-    <main className="min-h-screen px-5 py-6 sm:px-8 lg:px-10">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8">
-        <header className="rounded-3xl border border-amber-500/20 bg-stone-950/80 p-6 shadow-2xl shadow-black/30 lg:p-10">
-          <div className="mb-5 flex flex-wrap items-center gap-2 text-sm">
-            <Link className="font-medium text-amber-200 hover:text-amber-100" href="/">
-              Burnie Ops
-            </Link>
-            <span className="text-stone-600">/</span>
-            <PlanningBadge tone="amber">Areas</PlanningBadge>
-          </div>
-          <div className="space-y-4">
-            <PlanningBadge tone="amber">planning domains</PlanningBadge>
-            <div>
-              <h1 className="flex items-center gap-3 text-4xl font-semibold tracking-tight text-stone-50 sm:text-6xl">
-                <MapPinned className="size-9 text-amber-400" aria-hidden="true" />
-                Camp areas
-              </h1>
-              <p className="mt-4 max-w-3xl text-lg leading-8 text-stone-300">
-                Browse each Kumaya planning domain with lead ownership, active task pressure, blockers, decisions, milestones, and source-backed updates.
-              </p>
-            </div>
-          </div>
-        </header>
-
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className="min-h-screen">
+      <SiteHeader current="areas" />
+      <main className="mx-auto flex max-w-[1320px] flex-col gap-8 px-5 py-10 sm:px-8">
+        <CategoryStats stats={[{ value: datastore.areas.length, label: "domains", accent: true }, { value: leadCount, label: "with leads" }, { value: datastore.areas.length - leadCount, label: "lead TBD", tone: "text-[hsl(var(--warning))]" }]} />
+        <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-area-grid="true">
           {datastore.areas.map((area) => {
-            const counts = getAreaTaskCounts(datastore, area.slug);
+            const lead = area.lead ? datastore.people.find((person) => person.id === area.lead)?.name ?? area.lead : "Lead TBD";
+            const taskCount = datastore.tasks.filter((task) => task.area === area.slug && task.status !== "done").length;
             return (
-              <Link key={area.slug} className="group block" href={`/areas/${area.slug}`}>
-                <div className="space-y-2 transition group-hover:-translate-y-0.5">
-                  <AreaCard area={area} people={datastore.people} taskCount={counts.active} />
-                  <div className="flex flex-wrap gap-2 px-1">
-                    <PlanningBadge tone={counts.high ? "amber" : "stone"}>{counts.high} high</PlanningBadge>
-                    <PlanningBadge tone={counts.blocked ? "red" : "stone"}>{counts.blocked} blocked</PlanningBadge>
-                    <PlanningBadge tone={counts.needsReview ? "red" : "green"}>{counts.needsReview} needs review</PlanningBadge>
-                  </div>
+              <Link
+                key={area.slug}
+                className="group flex min-h-48 flex-col justify-between rounded-xl bg-card p-5 shadow-xs transition-colors hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                href={`/areas/${area.slug}`}
+                data-area-card="true"
+              >
+                <div>
+                  <h2 className="text-lg font-semibold leading-tight text-foreground group-hover:text-primary">{area.name}</h2>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{area.description}</p>
+                </div>
+                <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-xs uppercase tracking-wide text-muted-foreground" data-area-card-meta="true">
+                  <span>{lead}</span>
+                  <span>{taskCount} open tasks</span>
                 </div>
               </Link>
             );
           })}
         </section>
-
-        <Card className="border-stone-800 bg-stone-950/70">
-          <CardHeader>
-            <CardTitle className="text-amber-100">Read-only source of truth</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-stone-400">
-            This browser does not create, edit, or delete area data. Burnie updates the underlying YAML files and validation keeps the rendered site consistent.
-          </CardContent>
-        </Card>
-      </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </div>
   );
 }

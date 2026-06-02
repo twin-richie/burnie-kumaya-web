@@ -27,6 +27,8 @@ Current status: v1 local production app. The old throwaway prototype has been re
 ## Common commands
 
 ```bash
+npm run dev            # local development server on port 8080
+npm run validate:data  # validate YAML schema only
 npm run check          # validate data, run helper tests, build, and smoke-test production start
 npm run build          # build the Next.js app
 npm run start          # serve the built app locally on port 8080
@@ -50,9 +52,11 @@ https://ringtone-relate-second-ctrl.trycloudflare.com
 ## Operations
 
 See `docs/OPERATIONS.md` for the launchd setup, update/restart workflow, tunnel verification, and Burnie YAML update process.
+See `docs/BURNIE_WORKFLOW.md` for the AI content-management contract, provenance/confidence conventions, needs-review rules, and v1 verification checklist.
 
 ## Key documents
 
 - `BUILD_SPEC.md` — product and implementation spec
 - `docs/OPERATIONS.md` — local service and tunnel operating guide
+- `docs/BURNIE_WORKFLOW.md` — Burnie data update contract and v1 verification checklist
 - `archive/server.prototype.js` — obsolete pre-Next.js prototype kept only for reference

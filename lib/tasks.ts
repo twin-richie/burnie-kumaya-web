@@ -6,7 +6,7 @@ export const taskPriorities = ["urgent", "high", "normal", "low"] as const satis
 export const taskConfidences = ["high", "medium", "low"] as const satisfies readonly Confidence[];
 export const taskDueStates = ["overdue", "due-soon", "dated", "no-date"] as const;
 export const taskReviewStates = ["needs-review", "clear"] as const;
-export const taskSorts = ["attention", "due-date", "priority", "updated"] as const;
+export const taskSorts = ["attention", "title-asc", "title-desc", "owner-asc", "owner-desc", "priority-asc", "priority-desc", "due-date-asc", "due-date-desc", "review-asc", "review-desc", "updated"] as const;
 
 export type TaskDueState = (typeof taskDueStates)[number];
 export type TaskReviewState = (typeof taskReviewStates)[number];
@@ -48,6 +48,9 @@ function oneOf<T extends readonly string[]>(value: string | undefined, options: 
 }
 
 export function parseTaskFilters(params: Record<string, string | string[] | undefined>): TaskFilters {
+  const rawSort = scalar(params.sort);
+  const legacySort = rawSort === "due-date" ? "due-date-asc" : rawSort === "priority" ? "priority-asc" : rawSort;
+
   return {
     status: oneOf(scalar(params.status), taskStatuses),
     priority: oneOf(scalar(params.priority), taskPriorities),
@@ -56,7 +59,7 @@ export function parseTaskFilters(params: Record<string, string | string[] | unde
     due: oneOf(scalar(params.due), taskDueStates),
     review: oneOf(scalar(params.review), taskReviewStates),
     confidence: oneOf(scalar(params.confidence), taskConfidences),
-    sort: oneOf(scalar(params.sort), taskSorts) ?? "attention",
+    sort: oneOf(legacySort, taskSorts) ?? "attention",
   };
 }
 
@@ -104,14 +107,27 @@ export function filterTasks(tasks: Task[], filters: TaskFilters, asOf = new Date
     .sort((a, b) => compareTasks(a, b, filters.sort, asOf));
 }
 
+function compareDirection(value: number, sort: TaskSort): number {
+  return sort.endsWith("-desc") ? -value : value;
+}
+
 function compareTasks(a: Task, b: Task, sort: TaskSort, asOf: Date): number {
-  if (sort === "due-date") {
+  if (sort === "title-asc" || sort === "title-desc") {
+    return compareDirection(a.title.localeCompare(b.title), sort) || compareTasks(a, b, "attention", asOf);
+  }
+  if (sort === "owner-asc" || sort === "owner-desc") {
+    return compareDirection((a.owner ?? "").localeCompare(b.owner ?? ""), sort) || compareTasks(a, b, "attention", asOf);
+  }
+  if (sort === "due-date-asc" || sort === "due-date-desc") {
     const aDue = a.due_date ?? "9999-12-31";
     const bDue = b.due_date ?? "9999-12-31";
-    return aDue.localeCompare(bDue) || compareTasks(a, b, "attention", asOf);
+    return compareDirection(aDue.localeCompare(bDue), sort) || compareTasks(a, b, "attention", asOf);
   }
-  if (sort === "priority") {
-    return priorityRank[a.priority] - priorityRank[b.priority] || compareTasks(a, b, "attention", asOf);
+  if (sort === "priority-asc" || sort === "priority-desc") {
+    return compareDirection(priorityRank[a.priority] - priorityRank[b.priority], sort) || compareTasks(a, b, "attention", asOf);
+  }
+  if (sort === "review-asc" || sort === "review-desc") {
+    return compareDirection(Number(a.needs_review) - Number(b.needs_review), sort) || compareTasks(a, b, "attention", asOf);
   }
   if (sort === "updated") {
     return b.updated_at.localeCompare(a.updated_at) || compareTasks(a, b, "attention", asOf);

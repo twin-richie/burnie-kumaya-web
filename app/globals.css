@@ -1,51 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Spectral:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 24 27% 7%;
-    --foreground: 38 40% 94%;
-    --card: 24 25% 10%;
-    --card-foreground: 38 40% 94%;
-    --popover: 24 25% 10%;
-    --popover-foreground: 38 40% 94%;
-    --primary: 34 88% 55%;
-    --primary-foreground: 24 35% 8%;
-    --secondary: 25 35% 18%;
-    --secondary-foreground: 36 45% 88%;
-    --muted: 24 24% 16%;
-    --muted-foreground: 34 19% 66%;
-    --accent: 13 68% 42%;
-    --accent-foreground: 38 40% 94%;
-    --destructive: 0 72% 48%;
-    --destructive-foreground: 38 40% 94%;
-    --border: 28 25% 22%;
-    --input: 28 25% 22%;
-    --ring: 34 88% 55%;
-    --radius: 0.75rem;
+    color-scheme: light;
+    --background: 38 42% 94%;
+    --foreground: 350 17% 15%;
+    --card: 40 48% 97%;
+    --card-foreground: 350 17% 15%;
+    --popover: 40 48% 97%;
+    --popover-foreground: 350 17% 15%;
+    --primary: 353 64% 31%;
+    --primary-foreground: 42 52% 96%;
+    --secondary: 38 32% 89%;
+    --secondary-foreground: 350 18% 22%;
+    --muted: 38 28% 90%;
+    --muted-foreground: 28 12% 40%;
+    --accent: 38 36% 87%;
+    --accent-foreground: 350 18% 22%;
+    --destructive: 4 66% 44%;
+    --destructive-foreground: 42 52% 96%;
+    --success: 145 45% 32%;
+    --warning: 30 76% 42%;
+    --gold: 43 64% 44%;
+    --terracotta: 21 62% 45%;
+    --border: 34 26% 82%;
+    --input: 34 26% 82%;
+    --ring: 353 64% 31%;
+    --radius: 0.55rem;
+    --row-py: 0.7rem;
+    --card-pad: 1.5rem;
+    --section-gap: 6rem;
+    --cell-text: 0.875rem;
   }
 
   .dark {
-    --background: 24 27% 7%;
-    --foreground: 38 40% 94%;
-    --card: 24 25% 10%;
-    --card-foreground: 38 40% 94%;
-    --popover: 24 25% 10%;
-    --popover-foreground: 38 40% 94%;
-    --primary: 34 88% 55%;
-    --primary-foreground: 24 35% 8%;
-    --secondary: 25 35% 18%;
-    --secondary-foreground: 36 45% 88%;
-    --muted: 24 24% 16%;
-    --muted-foreground: 34 19% 66%;
-    --accent: 13 68% 42%;
-    --accent-foreground: 38 40% 94%;
-    --destructive: 0 72% 48%;
-    --destructive-foreground: 38 40% 94%;
-    --border: 28 25% 22%;
-    --input: 28 25% 22%;
-    --ring: 34 88% 55%;
+    color-scheme: dark;
+    --background: 353 24% 7%;
+    --foreground: 40 32% 90%;
+    --card: 352 20% 10%;
+    --card-foreground: 40 32% 90%;
+    --popover: 352 20% 10%;
+    --popover-foreground: 40 32% 90%;
+    --primary: 354 76% 62%;
+    --primary-foreground: 40 52% 98%;
+    --secondary: 350 14% 17%;
+    --secondary-foreground: 40 32% 90%;
+    --muted: 350 12% 16%;
+    --muted-foreground: 36 14% 63%;
+    --accent: 350 14% 20%;
+    --accent-foreground: 40 32% 90%;
+    --destructive: 4 62% 51%;
+    --destructive-foreground: 40 52% 96%;
+    --success: 145 42% 52%;
+    --warning: 36 74% 56%;
+    --gold: 45 64% 58%;
+    --terracotta: 24 64% 56%;
+    --border: 350 12% 20%;
+    --input: 350 12% 22%;
+    --ring: 354 60% 51%;
+  }
+
+  [data-density="compact"] {
+    --row-py: 0.4rem;
+    --card-pad: 1.1rem;
+    --section-gap: 4rem;
+    --cell-text: 0.8125rem;
   }
 
   * {
@@ -53,14 +76,53 @@
   }
 
   html {
-    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.25rem;
   }
 
   body {
     @apply min-h-screen bg-background text-foreground antialiased;
-    background:
-      radial-gradient(circle at top left, hsl(34 88% 28% / 0.22), transparent 34rem),
-      radial-gradient(circle at 85% 12%, hsl(13 68% 24% / 0.28), transparent 28rem),
-      linear-gradient(180deg, hsl(24 27% 7%), hsl(24 32% 5%) 68%);
+    font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "cv01", "ss01";
+  }
+
+  h1,
+  h2,
+  .font-serif {
+    font-family: "Spectral", "Iowan Old Style", Georgia, serif;
+    letter-spacing: -0.005em;
+  }
+
+  h1 {
+    letter-spacing: -0.015em;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 999px; border: 2px solid hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.5); }
+}
+
+@layer utilities {
+  .font-mono { font-family: "Geist Mono", ui-monospace, monospace; }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+  .shadow-xs { box-shadow: 0 1px 2px hsl(var(--foreground) / 0.04); }
+  .ring-focus:focus-visible { outline: 2px solid hsl(var(--ring) / 0.6); outline-offset: 2px; }
+  .playa-grain {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.035) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+  .lift { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .lift:hover { transform: translateY(-2px); border-color: hsl(var(--primary) / 0.45); }
+  .tab-active { color: hsl(var(--foreground)); }
+  .tab-active::after {
+    content: "";
+    position: absolute;
+    left: 0.7rem;
+    right: 0.7rem;
+    bottom: -1px;
+    height: 2px;
+    background: hsl(var(--primary));
+    border-radius: 2px;
   }
 }

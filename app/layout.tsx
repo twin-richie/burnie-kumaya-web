@@ -3,8 +3,18 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Burnie / Kumaya Planning Hub",
-  description: "Internal planning shell for Kumaya Burning Man camp operations.",
+  description: "Source-backed planning overview for the Kumaya Burning Man camp, maintained by Burnie.",
 };
+
+const themeScript = `
+(function () {
+  try {
+    var th = localStorage.getItem("kumaya-theme");
+    if (!th) th = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    if (th === "dark") document.documentElement.classList.add("dark");
+    document.documentElement.setAttribute("data-density", "comfortable");
+  } catch (e) {}
+})();`;
 
 export default function RootLayout({
   children,
@@ -12,7 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>{children}</body>
     </html>
   );
