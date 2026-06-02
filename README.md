@@ -43,10 +43,10 @@ The intended local service URL is:
 http://127.0.0.1:8080
 ```
 
-The current verified public tunnel URL is:
+The canonical live GitHub Pages URL is:
 
 ```text
-https://ringtone-relate-second-ctrl.trycloudflare.com
+https://twin-richie.github.io/burnie-kumaya-web/
 ```
 
 ## Operations

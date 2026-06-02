@@ -1,6 +1,6 @@
 # Burnie / Kumaya web operations
 
-This repo is intended to run as a local production-built Next.js service on Richie/Twin's Mac and be exposed by the existing Cloudflare tunnel.
+This repo is intended to deploy as a static GitHub Pages site. A local production-built Next.js service on Richie/Twin's Mac can still be used for fast local preview.
 
 ## Runtime decision
 
@@ -9,10 +9,10 @@ This repo is intended to run as a local production-built Next.js service on Rich
 - Local URL: `http://127.0.0.1:8080`
 - Production start command: `npm run start`
 - Process manager: macOS launchd user agent `com.burnie.kumaya.web`
-- Public tunnel target: `http://127.0.0.1:8080`
-- Current verified public URL: `https://ringtone-relate-second-ctrl.trycloudflare.com`
+- Canonical live URL: `https://twin-richie.github.io/burnie-kumaya-web/`
+- Optional local preview URL: `http://127.0.0.1:8080`
 
-Port 8080 is preserved because the current Cloudflare tunnel processes already target `http://127.0.0.1:8080`.
+GitHub Pages is the live site. Port 8080 is only for local preview.
 
 ## Active app vs retired prototype
 
@@ -79,7 +79,7 @@ Useful checks:
 
 ```bash
 curl -I http://127.0.0.1:8080
-curl -I https://ringtone-relate-second-ctrl.trycloudflare.com
+curl -I https://twin-richie.github.io/burnie-kumaya-web/
 ```
 
 ## Verifying the service
@@ -92,11 +92,11 @@ for path in / /tasks /areas /meetings /decisions /timeline /updates; do
 done
 ```
 
-Public tunnel smoke checks:
+GitHub Pages smoke checks:
 
 ```bash
 for path in / /tasks /areas /meetings /decisions /timeline /updates; do
-  curl -L -fsS "https://ringtone-relate-second-ctrl.trycloudflare.com$path" >/dev/null && echo "ok $path"
+  curl -L -fsS "https://twin-richie.github.io/burnie-kumaya-web$path" >/dev/null && echo "ok $path"
 done
 ```
 
@@ -117,10 +117,10 @@ logs/launchd.err.log
 
 ## Tunnel notes
 
-The existing Cloudflare tunnel command observed on this machine targets port 8080:
+Cloudflare quick tunnels are optional previews only, not the canonical live site. If needed, the command targets port 8080:
 
 ```bash
 cloudflared tunnel --url http://127.0.0.1:8080 --no-autoupdate
 ```
 
-The tunnel is separate from the Next.js app service. If the app responds locally but not publicly, inspect/restart the Cloudflare tunnel process rather than changing the app port.
+The tunnel is separate from both GitHub Pages and the local Next.js app service. Prefer GitHub Pages for camp-facing links.

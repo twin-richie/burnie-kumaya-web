@@ -6,10 +6,14 @@ items:
   - "Finance and dues: align on payment collection, fundraiser targets, and budget pressure."
   - "Infrastructure priorities: confirm power, water, gasoline, shade, freezer, and kitchen readiness."
   - "Playa experience: shape Tea & Tunes/interactivity plans and identify decisions needed from leads."
-updated_at: 2026-06-01
+  - "Planning site data review: review all existing planning-site data for accuracy, gaps, stale items, and needed updates."
+updated_at: 2026-06-02
 updated_by: Burnie
 confidence: medium
 provenance:
   - source_type: user_instruction
     source_ref: User requested an editable proposed agenda card for the next Leads meeting.
     source_date: 2026-06-01
+  - source_type: user_instruction
+    source_ref: User requested adding an agenda item to review all existing planning-site data and make updates.
+    source_date: 2026-06-02

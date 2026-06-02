@@ -4,7 +4,6 @@ const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const repositoryName = "burnie-kumaya-web";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["basically-telecom-shoot-geographical.trycloudflare.com"],
   ...(isGitHubPages
     ? {
         output: "export" as const,

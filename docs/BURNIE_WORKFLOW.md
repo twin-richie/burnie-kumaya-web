@@ -40,8 +40,8 @@ npm run service:restart
 # 6. Verify local routes
 npm run smoke
 
-# 7. Verify public routes when the Cloudflare tunnel should be live
-SMOKE_URL=https://ringtone-relate-second-ctrl.trycloudflare.com npm run smoke
+# 7. Verify public routes after GitHub Pages deploys
+SMOKE_URL=https://twin-richie.github.io/burnie-kumaya-web npm run smoke
 ```
 
 `npm run service:restart` runs `npm run check` before restarting launchd. If it fails, fix validation/build/test failures before restarting.
@@ -127,10 +127,10 @@ Local URL:
 http://127.0.0.1:8080
 ```
 
-Current public tunnel URL:
+Canonical live GitHub Pages URL:
 
 ```text
-https://ringtone-relate-second-ctrl.trycloudflare.com
+https://twin-richie.github.io/burnie-kumaya-web/
 ```
 
 Verify all major routes locally:
@@ -145,7 +145,7 @@ Verify all major routes publicly:
 
 ```bash
 for path in / /tasks /areas /meetings /decisions /timeline /updates; do
-  curl -L -fsS "https://ringtone-relate-second-ctrl.trycloudflare.com$path" >/dev/null && echo "ok public $path"
+  curl -L -fsS "https://twin-richie.github.io/burnie-kumaya-web$path" >/dev/null && echo "ok public $path"
 done
 ```
 
@@ -165,7 +165,7 @@ Before declaring v1 complete:
 - [ ] `npm run build` passes.
 - [ ] `npm run check` passes.
 - [ ] `http://127.0.0.1:8080` loads locally.
-- [ ] Current public tunnel URL loads the app.
+- [ ] Canonical GitHub Pages URL loads the app.
 - [ ] Homepage shows the attention dashboard.
 - [ ] `/tasks`, `/areas`, `/meetings`, `/decisions`, `/timeline`, and `/updates` work.
 - [ ] All seeded tasks have area, status, priority, confidence, and provenance.
