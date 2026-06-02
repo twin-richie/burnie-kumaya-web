@@ -1,6 +1,7 @@
 import type { Datastore, Milestone, Update } from "./types";
 
 export const MAN_BURN_DATE = "2026-09-06";
+export const SEASON_START_DATE = "2026-05-25";
 
 export type GanttMilestoneRow = Pick<Milestone, "id" | "date" | "title" | "type" | "area" | "description" | "confidence"> & {
   offsetPercent: number;
@@ -33,6 +34,12 @@ function clamp(value: number, minimum: number, maximum: number) {
   return Math.min(maximum, Math.max(minimum, value));
 }
 
+export function timelineOffsetPercent(date: string) {
+  const totalDays = Math.max(1, dayDifference(SEASON_START_DATE, MAN_BURN_DATE));
+  const daysFromStart = clamp(dayDifference(SEASON_START_DATE, date), 0, totalDays);
+  return Math.round((daysFromStart / totalDays) * 10000) / 100;
+}
+
 function manBurnMilestone(): Milestone {
   return {
     id: "milestone-burn-ends-2026",
@@ -45,8 +52,8 @@ function manBurnMilestone(): Milestone {
   };
 }
 
-export function buildGanttMilestoneRows(milestones: Milestone[], asOf = new Date()): GanttMilestoneRow[] {
-  const startDate = isoDateOnly(asOf);
+export function buildGanttMilestoneRows(milestones: Milestone[]): GanttMilestoneRow[] {
+  const startDate = SEASON_START_DATE;
   const totalDaysRaw = dayDifference(startDate, MAN_BURN_DATE);
   const totalDays = Math.max(1, totalDaysRaw);
   const sourceMilestones = milestones.filter((milestone) => milestone.date >= startDate && milestone.date <= MAN_BURN_DATE);

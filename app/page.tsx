@@ -7,7 +7,7 @@ import { loadNextLeadsAgenda } from "@/lib/agenda";
 import { loadDatastore } from "@/lib/data";
 import { formatDisplayDate } from "@/lib/dates";
 import { latestByDate, summarizeAreas, summarizeAttention } from "@/lib/dashboard";
-import { buildGanttMilestoneRows, MAN_BURN_DATE } from "@/lib/timeline";
+import { buildGanttMilestoneRows, MAN_BURN_DATE, SEASON_START_DATE, timelineOffsetPercent } from "@/lib/timeline";
 import type { Task } from "@/lib/types";
 
 const sections = [
@@ -55,10 +55,10 @@ function Section({ id, alt, children }: { id: string; alt?: boolean; children: R
 }
 
 function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilestoneRows>; today: string }) {
-  const toBurn = Math.max(1, daysBetween(today, MAN_BURN_DATE));
-  const pct = (date: string) => Math.max(0, Math.min(100, (daysBetween(today, date) / toBurn) * 100));
-  const burnStart = pct("2026-08-31");
-  const dayGrid = Array.from({ length: toBurn + 1 }, (_, day) => ({ day, offsetPercent: Math.round((day / toBurn) * 10000) / 100 }));
+  const totalDays = Math.max(1, daysBetween(SEASON_START_DATE, MAN_BURN_DATE));
+  const burnStart = timelineOffsetPercent("2026-08-31");
+  const todayOffset = timelineOffsetPercent(today);
+  const dayGrid = Array.from({ length: totalDays + 1 }, (_, day) => ({ day, offsetPercent: Math.round((day / totalDays) * 10000) / 100 }));
 
   return (
     <div className="px-1 pb-2 pt-7">
@@ -69,6 +69,9 @@ function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilesto
           ))}
         </div>
         <div className="absolute inset-y-[-3px] rounded-full bg-primary/30 ring-1 ring-primary/40" style={{ left: `${burnStart}%`, right: 0 }} title="Burn week" />
+        <div className="absolute inset-y-[-10px] z-10 w-0.5 -translate-x-1/2 rounded-full bg-foreground" style={{ left: `${todayOffset}%` }} title={`Today · ${fmtDate(today)}`} aria-label={`Today · ${fmtDate(today)}`} data-overview-today-marker="true">
+          <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-foreground px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-background shadow-sm">Today</span>
+        </div>
         {rows.map((row) => (
           <div key={row.id} className="group absolute top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ left: `${row.offsetPercent}%` }} title={`${row.title} · ${fmtDate(row.date)}`} aria-label={`${row.title} · ${fmtDate(row.date)}`}>
             <span className={row.isManBurn ? "block size-3 rounded-full border-2 border-card bg-primary shadow-sm" : "block size-3 rounded-full border-2 border-card bg-[hsl(var(--terracotta))] shadow-sm"} />
@@ -79,7 +82,7 @@ function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilesto
         ))}
       </div>
       <div className="mt-2 flex justify-between text-xs font-medium text-muted-foreground">
-        <span>Today</span>
+        <span>May 25</span>
         <span className="text-primary">Burn week</span>
       </div>
     </div>
@@ -160,7 +163,7 @@ export default async function Home() {
       <SiteHeader sections={sections} />
 
       <Section id="timeline">
-        <SectionHeader eyebrow="Timeline" icon={CalendarClock} count={`${upcomingRows.length} upcoming`} title="Milestones from now through the burn" blurb="Key dates plotted from today to September 6. Hover markers for the date and event name. Task due dates surface here too." href="/timeline" />
+        <SectionHeader eyebrow="Timeline" icon={CalendarClock} count={`${upcomingRows.length} upcoming`} title="Milestones from May 25 through the burn" blurb="Key dates plotted from May 25 to September 6. Today is marked on the rail; hover markers for the date and event name. Task due dates surface here too." href="/timeline" />
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
           <Card className="shadow-xs">
             <CardContent className="p-6">

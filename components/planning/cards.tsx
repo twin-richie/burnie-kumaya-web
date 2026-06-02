@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { NextLeadsAgenda } from "@/lib/agenda";
 import { formatDisplayDate } from "@/lib/dates";
-import type { GanttMilestoneRow } from "@/lib/timeline";
+import { timelineOffsetPercent, type GanttMilestoneRow } from "@/lib/timeline";
 import type { Area, Decision, Meeting, Milestone, Person, Task, Update } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ConfidenceBadge, NeedsReviewBadge, PlanningBadge, PriorityBadge } from "./badges";
@@ -138,8 +138,9 @@ function formatShortDate(date: string) {
   return formatDisplayDate(date);
 }
 
-export function GanttTimeline({ rows, areas = [], compact = false }: { rows: GanttMilestoneRow[]; areas?: Area[]; compact?: boolean }) {
+export function GanttTimeline({ rows, areas = [], compact = false, today }: { rows: GanttMilestoneRow[]; areas?: Area[]; compact?: boolean; today?: string }) {
   const totalDays = Math.max(1, rows.at(-1)?.daysFromStart ?? 1);
+  const todayOffset = today ? timelineOffsetPercent(today) : undefined;
   const weekTicks = Array.from({ length: Math.floor(totalDays / 7) + 1 }, (_, week) => {
     const day = week * 7;
     return { day, offsetPercent: Math.round((day / totalDays) * 10000) / 100 };
@@ -156,6 +157,11 @@ export function GanttTimeline({ rows, areas = [], compact = false }: { rows: Gan
             ))}
           </div>
           <div className="absolute inset-y-[-3px] rounded-full bg-primary/30 ring-1 ring-primary/40" style={{ left: `${Math.max(0, Math.min(100, rows.find((row) => row.date >= "2026-08-30")?.offsetPercent ?? 92))}%`, right: 0 }} title="Burn week" />
+          {today && todayOffset !== undefined ? (
+            <div className="absolute inset-y-[-10px] z-10 w-0.5 -translate-x-1/2 rounded-full bg-foreground" style={{ left: `${todayOffset}%` }} title={`Today · ${formatShortDate(today)}`} aria-label={`Today · ${formatShortDate(today)}`} data-gantt-today-marker="true">
+              <span className="absolute -top-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-foreground px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-background shadow-sm">Today</span>
+            </div>
+          ) : null}
           {rows.map((row) => (
             <div key={`${row.id}-marker`} className="group absolute top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ left: `${row.offsetPercent}%` }} title={`${row.title} · ${formatShortDate(row.date)}`} aria-label={`${row.title} · ${formatShortDate(row.date)}`}>
               <span className={row.isManBurn ? "block size-3 rounded-full border-2 border-card bg-primary shadow-sm" : "block size-3 rounded-full border-2 border-card bg-[hsl(var(--terracotta))] shadow-sm"} />
@@ -166,7 +172,7 @@ export function GanttTimeline({ rows, areas = [], compact = false }: { rows: Gan
           ))}
         </div>
         <div className="mt-2 flex justify-between text-xs font-medium text-muted-foreground">
-          <span>Today</span>
+          <span>May 25</span>
           <span>Phase markers</span>
           <span className="text-primary">Burn week</span>
         </div>

@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 const base = process.env.SMOKE_URL ?? "http://127.0.0.1:8080";
 
 const checks = [
-  { path: "/", required: ["Milestones from now through the burn"] },
+  { path: "/", required: ["Milestones from May 25 through the burn"] },
   { path: "/tasks", required: ["Add filter", "Task name", "Owner", "Priority", "Due date", "Review?"] },
   { path: "/areas", required: ["Meetings and Admin", "Finance and Dues"] },
   { path: "/meetings", required: ["Kumaya Committee"] },
@@ -161,7 +161,7 @@ async function assertAreaNaming() {
 async function assertOverviewSectionHeaders() {
   const html = await fetchHtml("/");
   const expectations = [
-    { id: "timeline", href: "/timeline", name: "Timeline", subhead: "Milestones from now through the burn", removedBlurb: "Key dates plotted from today to September 5", oldCta: "Open timeline" },
+    { id: "timeline", href: "/timeline", name: "Timeline", subhead: "Milestones from May 25 through the burn", removedBlurb: "Key dates plotted from today to September 5", oldCta: "Open timeline" },
     { id: "tasks", href: "/tasks", name: "Tasks", subhead: "Open work, sorted by what&#x27;s due soonest", removedBlurb: "The ten most pressing items", oldCta: "Open task dashboard" },
     { id: "areas", href: "/areas", name: "Area", subhead: "The planning domains and who leads them", removedBlurb: "Each area carries a lead", oldCta: "Open areas" },
     { id: "meetings", href: "/meetings", name: "Meetings", subhead: "Committee notes, kept source-true", removedBlurb: "Meeting records with summaries", oldCta: "Open meetings" },
@@ -342,12 +342,15 @@ async function assertCritiqueFixes() {
     throw new Error("Timeline should remove the translucent phase-background spans");
   }
   const weekTicks = timelineHtml.match(/data-gantt-week-tick="true"/g) ?? [];
-  const weeksToBurn = Math.floor((Date.parse("2026-09-06T00:00:00.000Z") - Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00.000Z")) / (7 * 86_400_000)) + 1;
+  const weeksToBurn = Math.floor((Date.parse("2026-09-06T00:00:00.000Z") - Date.parse("2026-05-25T00:00:00.000Z")) / (7 * 86_400_000)) + 1;
   if (weekTicks.length !== Math.max(1, weeksToBurn)) {
     throw new Error(`Timeline should render one tick for every week to the Man Burn, expected ${Math.max(1, weeksToBurn)}, found ${weekTicks.length}`);
   }
   if (!timelineHtml.includes("Burn week")) {
     throw new Error("Timeline should still emphasize the Burn week deadline band");
+  }
+  if (!timelineHtml.includes('data-gantt-today-marker="true"') || !timelineHtml.includes("Today · Jun 02")) {
+    throw new Error("Timeline should mark today on the rail with a hover label");
   }
   for (const path of ["/", "/timeline", "/updates"]) {
     const html = await fetchHtml(path);
