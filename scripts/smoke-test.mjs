@@ -342,7 +342,7 @@ async function assertCritiqueFixes() {
     throw new Error("Timeline should remove the translucent phase-background spans");
   }
   const weekTicks = timelineHtml.match(/data-gantt-week-tick="true"/g) ?? [];
-  const weeksToBurn = Math.floor((Date.parse("2026-09-05T00:00:00.000Z") - Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00.000Z")) / (7 * 86_400_000)) + 1;
+  const weeksToBurn = Math.floor((Date.parse("2026-09-06T00:00:00.000Z") - Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00.000Z")) / (7 * 86_400_000)) + 1;
   if (weekTicks.length !== Math.max(1, weeksToBurn)) {
     throw new Error(`Timeline should render one tick for every week to the Man Burn, expected ${Math.max(1, weeksToBurn)}, found ${weekTicks.length}`);
   }
@@ -397,7 +397,7 @@ async function assertQueuedDesignUpdates() {
   if (!ganttAxis) {
     throw new Error("Timeline Gantt view should render a date axis above the x-axis rail");
   }
-  for (const label of ["Jul 11", "Jul 15", "Sep 05"]) {
+  for (const label of ["Jul 11", "Jul 15", "Sep 06"]) {
     if (!ganttAxis.includes(label)) {
       throw new Error(`Timeline Gantt date axis should include ${label}`);
     }
@@ -440,8 +440,8 @@ async function assertQueuedDesignUpdates() {
   if (timelineHtml.includes("endpoint")) {
     throw new Error("The Man Burn card should not render the endpoint chip");
   }
-  if (!timelineHtml.includes("The Man Burn") || timelineHtml.includes("The Man burns")) {
-    throw new Error("Synthetic Man Burn milestone should be titled The Man Burn");
+  if (!timelineHtml.includes("Burn ends") || timelineHtml.includes("The Man burns")) {
+    throw new Error("Synthetic burn-end milestone should be titled Burn ends");
   }
 
   const meetingsHtml = await fetchHtml("/meetings");

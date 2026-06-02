@@ -43,19 +43,19 @@ assert.equal(counts.event, 0);
 
 assert.deepEqual(sortUpdatesNewestFirst(datastore.updates).map((update) => update.id), ["new", "old"]);
 
-assert.equal(MAN_BURN_DATE, "2026-09-05");
+assert.equal(MAN_BURN_DATE, "2026-09-06");
 
 const ganttRows = buildGanttMilestoneRows(datastore.milestones, new Date("2026-06-01T00:00:00.000Z"));
-assert.deepEqual(ganttRows.map((row) => row.id), ["future-a", "future-b", "man-burn-2026"]);
+assert.deepEqual(ganttRows.map((row) => row.id), ["future-a", "future-b", "milestone-burn-ends-2026"]);
 assert.equal(ganttRows[0].date, "2026-07-01");
 assert.equal(ganttRows[0].offsetPercent, 31);
-assert.equal(ganttRows[1].offsetPercent, 46);
+assert.equal(ganttRows[1].offsetPercent, 45);
 assert.equal(ganttRows[ganttRows.length - 1].offsetPercent, 100);
 assert.equal(ganttRows[ganttRows.length - 1].isManBurn, true);
-assert.equal(ganttRows[ganttRows.length - 1].title, "The Man Burn");
+assert.equal(ganttRows[ganttRows.length - 1].title, "Burn ends");
 
-const ganttWithBurn = buildGanttMilestoneRows([], new Date("2026-09-05T00:00:00.000Z"));
-assert.deepEqual(ganttWithBurn.map((row) => row.id), ["man-burn-2026"]);
+const ganttWithBurn = buildGanttMilestoneRows([], new Date("2026-09-06T00:00:00.000Z"));
+assert.deepEqual(ganttWithBurn.map((row) => row.id), ["milestone-burn-ends-2026"]);
 assert.equal(ganttWithBurn[0].offsetPercent, 100);
 assert.equal(ganttWithBurn[0].isManBurn, true);
 

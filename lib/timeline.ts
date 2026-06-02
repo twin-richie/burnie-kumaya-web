@@ -1,6 +1,6 @@
 import type { Datastore, Milestone, Update } from "./types";
 
-export const MAN_BURN_DATE = "2026-09-05";
+export const MAN_BURN_DATE = "2026-09-06";
 
 export type GanttMilestoneRow = Pick<Milestone, "id" | "date" | "title" | "type" | "area" | "description" | "confidence"> & {
   offsetPercent: number;
@@ -35,13 +35,13 @@ function clamp(value: number, minimum: number, maximum: number) {
 
 function manBurnMilestone(): Milestone {
   return {
-    id: "man-burn-2026",
+    id: "milestone-burn-ends-2026",
     date: MAN_BURN_DATE,
-    title: "The Man Burn",
+    title: "Burn ends",
     type: "event",
-    description: "Final marker for the v1 season timeline.",
+    description: "Final marker for the 2026 burn timeline.",
     confidence: "high",
-    provenance: [{ source_type: "manual_seed", source_ref: "Burning Man 2026 event calendar" }],
+    provenance: [{ source_type: "user_instruction", source_ref: "telegram:richie:2026-06-02", source_date: "2026-06-02" }],
   };
 }
 
@@ -50,12 +50,12 @@ export function buildGanttMilestoneRows(milestones: Milestone[], asOf = new Date
   const totalDaysRaw = dayDifference(startDate, MAN_BURN_DATE);
   const totalDays = Math.max(1, totalDaysRaw);
   const sourceMilestones = milestones.filter((milestone) => milestone.date >= startDate && milestone.date <= MAN_BURN_DATE);
-  const includesManBurn = sourceMilestones.some((milestone) => milestone.date === MAN_BURN_DATE || milestone.id === "man-burn-2026");
+  const includesManBurn = sourceMilestones.some((milestone) => milestone.date === MAN_BURN_DATE || milestone.id === "milestone-burn-ends-2026");
   const visibleMilestones = sortMilestonesByDate(includesManBurn ? sourceMilestones : [...sourceMilestones, manBurnMilestone()]);
 
   return visibleMilestones.map((milestone) => {
     const daysFromStart = clamp(dayDifference(startDate, milestone.date), 0, totalDays);
-    const isManBurn = milestone.date === MAN_BURN_DATE || milestone.id === "man-burn-2026";
+    const isManBurn = milestone.date === MAN_BURN_DATE || milestone.id === "milestone-burn-ends-2026";
     return {
       id: milestone.id,
       date: milestone.date,

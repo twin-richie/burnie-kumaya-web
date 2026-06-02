@@ -66,3 +66,34 @@
     - source_type: meeting
       source_ref: kumaya/meetings/2026-05-25-kumaya-committee.md
       source_date: 2026-05-25
+
+- id: update-2026-06-02-season-dates
+  date: 2026-06-02
+  title: Updated 2026 pre-build, build, and burn dates
+  summary: Added explicit timeline milestones for pre-build running August 25-28, build running August 28-30, and the burn running August 31-September 6.
+  changed_objects:
+    - type: milestone
+      id: milestone-pre-build-starts-2026
+      change: Added pre-build start date of August 25, 2026.
+    - type: milestone
+      id: milestone-pre-build-ends-2026
+      change: Added pre-build end date of August 28, 2026.
+    - type: milestone
+      id: milestone-build-starts-2026
+      change: Added build start date of August 28, 2026.
+    - type: milestone
+      id: milestone-build-ends-2026
+      change: Added build end date of August 30, 2026.
+    - type: milestone
+      id: milestone-burn-starts-2026
+      change: Added burn start date of August 31, 2026.
+    - type: milestone
+      id: milestone-burn-ends-2026
+      change: Added burn end date of September 6, 2026 and aligned the timeline final marker to that date.
+  source: telegram-user-instruction
+  confidence: high
+  provenance:
+    - source_type: user_instruction
+      source_ref: telegram:richie:2026-06-02
+      source_date: 2026-06-02
+      quote: "pre-build... August 25... August 28. Build... Aug 28... Aug 30. the burn... Aug 31... September 6"
