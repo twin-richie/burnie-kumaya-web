@@ -1,6 +1,6 @@
 # Burnie / Kumaya web operations
 
-This repo is intended to deploy as a static GitHub Pages site. A local production-built Next.js service on Richie/Twin's Mac can still be used for fast local preview.
+This repo is intended to run as an always-live service on Richie/Twin's Mac. The site reads the current source files from disk at request time; GitHub Pages/static export is not the canonical runtime.
 
 ## Runtime decision
 
@@ -9,10 +9,12 @@ This repo is intended to deploy as a static GitHub Pages site. A local productio
 - Local URL: `http://127.0.0.1:8080`
 - Production start command: `npm run start`
 - Process manager: macOS launchd user agent `com.burnie.kumaya.web`
-- Canonical live URL: `https://twin-richie.github.io/burnie-kumaya-web/`
-- Optional local preview URL: `http://127.0.0.1:8080`
+- Canonical live URL on this Mac: `http://127.0.0.1:8080`
+- Stable public URL: `https://kumaya.richie.co`
+- Public access: Cloudflare named tunnel `kumaya-planning-site` to `http://127.0.0.1:8080`
+- Tunnel process manager: macOS launchd user agent `com.burnie.kumaya.tunnel`
 
-GitHub Pages is the live site. Port 8080 is only for local preview.
+The Mac-hosted launchd service is the live site. GitHub Pages is not the canonical deployment target.
 
 ## Active app vs retired prototype
 
@@ -53,6 +55,8 @@ npm run service:restart
 
 `npm run service:restart` runs `npm run check` first, then restarts the launchd service with `launchctl kickstart -k`. If you only want to validate without restarting, run `npm run check`.
 
+Pages are configured as dynamic, so YAML-only changes are read from disk on each request. Restart anyway after Burnie edits files so validation/build failures are caught before the live service is considered updated.
+
 If launchd is not installed yet, use:
 
 ```bash
@@ -72,14 +76,14 @@ npm run start
 2. Run `npm run validate:data` for a fast schema check.
 3. Run `npm run check` before publishing/restarting.
 4. Commit data changes to git so history records what Burnie changed.
-5. Restart the local service with `npm run service:restart`.
-6. Verify local and public routes.
+5. Run `npm run service:restart` to validate/build and refresh the launchd process.
+6. Verify local routes and, if a tunnel is active, the public tunnel URL.
 
 Useful checks:
 
 ```bash
 curl -I http://127.0.0.1:8080
-curl -I https://twin-richie.github.io/burnie-kumaya-web/
+curl -I https://kumaya.richie.co
 ```
 
 ## Verifying the service
@@ -92,11 +96,13 @@ for path in / /tasks /areas /meetings /decisions /timeline /updates; do
 done
 ```
 
-GitHub Pages smoke checks:
+Public tunnel smoke checks:
 
 ```bash
+SMOKE_URL="https://kumaya.richie.co" npm run smoke
+
 for path in / /tasks /areas /meetings /decisions /timeline /updates; do
-  curl -L -fsS "https://twin-richie.github.io/burnie-kumaya-web$path" >/dev/null && echo "ok $path"
+  curl -L -fsS "https://kumaya.richie.co$path" >/dev/null && echo "ok $path"
 done
 ```
 
@@ -117,10 +123,32 @@ logs/launchd.err.log
 
 ## Tunnel notes
 
-Cloudflare quick tunnels are optional previews only, not the canonical live site. If needed, the command targets port 8080:
+The stable public URL is backed by Cloudflare named tunnel `kumaya-planning-site`. Config and credentials live under the Burnie profile home:
+
+```text
+/Users/twin/.hermes/profiles/burnie/home/.cloudflared/config.yml
+/Users/twin/.hermes/profiles/burnie/home/.cloudflared/cbc65c94-8aa8-4447-9f80-268ecca8ab53.json
+```
+
+The launchd plist lives at:
+
+```text
+/Users/twin/Library/LaunchAgents/com.burnie.kumaya.tunnel.plist
+```
+
+Useful tunnel commands:
+
+```bash
+launchctl print gui/$(id -u)/com.burnie.kumaya.tunnel
+launchctl kickstart -k gui/$(id -u)/com.burnie.kumaya.tunnel
+cloudflared tunnel info kumaya-planning-site
+SMOKE_URL=https://kumaya.richie.co npm run smoke
+```
+
+Cloudflare quick tunnels are no longer the camp-facing URL. If a one-off preview is needed, the command targets port 8080:
 
 ```bash
 cloudflared tunnel --url http://127.0.0.1:8080 --no-autoupdate
 ```
 
-The tunnel is separate from both GitHub Pages and the local Next.js app service. Prefer GitHub Pages for camp-facing links.
+Quick tunnel URLs can change if `cloudflared` restarts; use `https://kumaya.richie.co` for camp-facing links.

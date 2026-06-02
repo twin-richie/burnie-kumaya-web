@@ -4,7 +4,7 @@ Internal-use planning surface for the Kumaya Burning Man camp.
 
 Burnie, an AI agent, maintains structured planning data. The site renders an attention-first dashboard for tasks, areas, meetings, decisions, timeline milestones, and changelog updates.
 
-Current status: v1 local production app. The old throwaway prototype has been retired to `archive/server.prototype.js`; the active service is the built Next.js app served on port 8080.
+Current status: v1 local production app. The old throwaway prototype has been retired to `archive/server.prototype.js`; the active service is the Next.js app served from this Mac on port 8080.
 
 ## Stack
 
@@ -14,7 +14,7 @@ Current status: v1 local production app. The old throwaway prototype has been re
 - shadcn/ui-style local components
 - File-backed YAML datastore
 - Zod validation
-- Local long-running service behind a public Cloudflare tunnel
+- Local long-running service on this Mac, optionally exposed through a public Cloudflare tunnel
 
 ## Non-goals
 
@@ -37,17 +37,19 @@ npm run service:restart
 npm run service:uninstall
 ```
 
-The intended local service URL is:
+The canonical live service URL on this Mac is:
 
 ```text
 http://127.0.0.1:8080
 ```
 
-The canonical live GitHub Pages URL is:
+The stable public URL is:
 
 ```text
-https://twin-richie.github.io/burnie-kumaya-web/
+https://kumaya.richie.co
 ```
+
+The app is configured to render dynamically so the served pages read the latest YAML files from `data/` instead of relying on a GitHub Pages/static export snapshot.
 
 ## Operations
 

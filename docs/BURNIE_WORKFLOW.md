@@ -26,7 +26,7 @@ From `/Users/twin/Context/burnie/web`:
 # 2. Fast schema validation
 npm run validate:data
 
-# 3. Full verification before publishing
+# 3. Full verification before considering the live service updated
 npm run check
 
 # 4. Commit the changed source files
@@ -34,14 +34,14 @@ npm run check
 git add data
 # git commit -m "data: update Kumaya planning state"
 
-# 5. Restart the local production service after checks pass
+# 5. Restart the Mac-hosted production service after checks pass
 npm run service:restart
 
 # 6. Verify local routes
 npm run smoke
 
-# 7. Verify public routes after GitHub Pages deploys
-SMOKE_URL=https://twin-richie.github.io/burnie-kumaya-web npm run smoke
+# 7. Verify public routes through the stable tunnel
+SMOKE_URL=https://kumaya.richie.co npm run smoke
 ```
 
 `npm run service:restart` runs `npm run check` before restarting launchd. If it fails, fix validation/build/test failures before restarting.
@@ -127,10 +127,16 @@ Local URL:
 http://127.0.0.1:8080
 ```
 
-Canonical live GitHub Pages URL:
+Canonical live Mac-hosted URL:
 
 ```text
-https://twin-richie.github.io/burnie-kumaya-web/
+http://127.0.0.1:8080
+```
+
+Stable public URL:
+
+```text
+https://kumaya.richie.co
 ```
 
 Verify all major routes locally:
@@ -144,8 +150,10 @@ done
 Verify all major routes publicly:
 
 ```bash
+SMOKE_URL="https://kumaya.richie.co" npm run smoke
+
 for path in / /tasks /areas /meetings /decisions /timeline /updates; do
-  curl -L -fsS "https://twin-richie.github.io/burnie-kumaya-web$path" >/dev/null && echo "ok public $path"
+  curl -L -fsS "https://kumaya.richie.co$path" >/dev/null && echo "ok public $path"
 done
 ```
 
@@ -165,7 +173,8 @@ Before declaring v1 complete:
 - [ ] `npm run build` passes.
 - [ ] `npm run check` passes.
 - [ ] `http://127.0.0.1:8080` loads locally.
-- [ ] Canonical GitHub Pages URL loads the app.
+- [ ] Canonical Mac-hosted URL loads the app.
+- [ ] Stable public URL `https://kumaya.richie.co` loads the app.
 - [ ] Homepage shows the attention dashboard.
 - [ ] `/tasks`, `/areas`, `/meetings`, `/decisions`, `/timeline`, and `/updates` work.
 - [ ] All seeded tasks have area, status, priority, confidence, and provenance.
