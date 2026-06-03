@@ -2,7 +2,7 @@ import { CategoryStats, GanttTimeline, SiteFooter, SiteHeader, TimelineList } fr
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { loadDatastore } from "@/lib/data";
 import { formatDisplayDate } from "@/lib/dates";
-import { buildGanttMilestoneRows, countMilestonesByType, groupMilestonesByTime, MAN_BURN_DATE } from "@/lib/timeline";
+import { buildUpcomingGanttMilestoneRows, countMilestonesByType, groupMilestonesByTime, MAN_BURN_DATE } from "@/lib/timeline";
 
 export const metadata = { title: "Timeline · Burnie / Kumaya Planning Hub" };
 
@@ -17,7 +17,7 @@ export default async function TimelinePage() {
   const today = isoToday();
   const grouped = groupMilestonesByTime(datastore);
   const typeCounts = countMilestonesByType(datastore.milestones);
-  const ganttRows = buildGanttMilestoneRows(datastore.milestones);
+  const ganttRows = buildUpcomingGanttMilestoneRows(datastore.milestones, today);
 
   return (
     <div className="min-h-screen">
@@ -28,7 +28,7 @@ export default async function TimelinePage() {
           <Card className="shadow-xs" data-timeline-panel="true">
             <CardHeader>
               <CardTitle>Upcoming</CardTitle>
-              <CardDescription className="max-w-[75ch]">Milestones from Monday, May 25 to September 6. Today is marked on the rail; hover markers for the date and event name.</CardDescription>
+              <CardDescription className="max-w-[75ch]">Upcoming milestones through September 6. Today is marked on the rail; hover markers for the date and event name.</CardDescription>
             </CardHeader>
             <CardContent>
               <GanttTimeline rows={ganttRows} areas={datastore.areas} today={today} />

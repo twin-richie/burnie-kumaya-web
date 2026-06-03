@@ -12,7 +12,7 @@ import { formatDisplayDate } from "@/lib/dates";
 import { ConfidenceBadge, NeedsReviewBadge, PlanningBadge, PriorityBadge, StatusBadge } from "./badges";
 import { SourceDisclosure } from "./cards";
 
-type SortColumn = "title" | "owner" | "priority" | "due-date" | "review";
+type SortColumn = "code" | "title" | "owner" | "priority" | "due-date" | "review";
 
 type SortLink = {
   href: string;
@@ -81,6 +81,14 @@ function DetailRow({ label, value }: { label: string; value: React.ReactNode }) 
   );
 }
 
+function TaskCodeBadge({ code }: { code: string }) {
+  return (
+    <span className="inline-flex rounded-md border border-primary/20 bg-primary/5 px-2 py-1 font-mono text-xs font-semibold tabular-nums text-primary">
+      {code}
+    </span>
+  );
+}
+
 function taskRisk(task: Task) {
   if (!task.owner && (task.priority === "urgent" || task.priority === "high")) return "unowned-high";
   if (task.needs_review) return "needs-review";
@@ -105,10 +113,11 @@ export function TaskTable({
         {toolbar ? <div className="border-b border-border bg-card p-4">{toolbar}</div> : null}
         <CardContent className="p-0">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[760px] border-collapse text-sm">
+            <table className="w-full min-w-[840px] border-collapse text-sm">
               <caption className="sr-only">Tasks table</caption>
               <thead className="bg-muted/60 text-left text-xs uppercase tracking-[0.14em] text-muted-foreground">
                 <tr>
+                  <th scope="col" className="px-4 py-3 font-medium"><SortHeader label="ID" sort={sortLinks?.code} /></th>
                   <th scope="col" className="px-4 py-3 font-medium"><SortHeader label="Task name" sort={sortLinks?.title} /></th>
                   <th scope="col" className="px-4 py-3 font-medium"><SortHeader label="Owner" sort={sortLinks?.owner} /></th>
                   <th scope="col" className="px-4 py-3 font-medium"><SortHeader label="Priority" sort={sortLinks?.priority} /></th>
@@ -124,6 +133,7 @@ export function TaskTable({
                     data-task-row-risk={taskRisk(task)}
                     className={cn("group cursor-pointer bg-card transition-colors hover:bg-accent/40", taskRisk(task) === "unowned-high" ? "bg-destructive/5" : undefined)}
                   >
+                    <td className="px-4 py-3 align-middle"><TaskCodeBadge code={task.code} /></td>
                     <td className="px-4 py-3 align-middle">
                       <button
                         type="button"
@@ -163,6 +173,7 @@ export function TaskTable({
                   <NeedsReviewBadge needsReview={selectedTask.needs_review} />
                 </div>
                 <div>
+                  <div className="mb-2"><TaskCodeBadge code={selectedTask.code} /></div>
                   <h2 id="task-drawer-title" className="font-serif text-2xl font-semibold leading-tight text-foreground">{selectedTask.title}</h2>
                 </div>
               </div>
@@ -172,6 +183,7 @@ export function TaskTable({
             </div>
             <div className="flex-1 overflow-y-auto p-5">
               <dl className="rounded-lg border bg-background/40 px-4">
+                <DetailRow label="Task ID" value={<TaskCodeBadge code={selectedTask.code} />} />
                 <DetailRow label="Owner" value={personName(selectedTask.owner, people)} />
                 <DetailRow label="Area" value={areaName(selectedTask.area, areas)} />
                 <DetailRow label="Status" value={pretty(selectedTask.status)} />

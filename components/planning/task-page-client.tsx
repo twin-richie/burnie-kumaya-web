@@ -146,14 +146,14 @@ function TaskTableToolbar({ filters, params, areas, people, totalCount, resultCo
   );
 }
 
-function nextSortFor(current: TaskSort, column: "title" | "owner" | "priority" | "due-date" | "review"): TaskSort {
+function nextSortFor(current: TaskSort, column: "code" | "title" | "owner" | "priority" | "due-date" | "review"): TaskSort {
   const asc = `${column}-asc` as TaskSort;
   const desc = `${column}-desc` as TaskSort;
   return current === asc ? desc : asc;
 }
 
 function sortLinksFor(filters: TaskFilters, activeKeys: FilterKey[]) {
-  const columns = ["title", "owner", "priority", "due-date", "review"] as const;
+  const columns = ["code", "title", "owner", "priority", "due-date", "review"] as const;
   return Object.fromEntries(columns.map((column) => {
     const active = filters.sort === `${column}-asc` || filters.sort === `${column}-desc`;
     const direction = filters.sort === `${column}-desc` ? "desc" : filters.sort === `${column}-asc` ? "asc" : undefined;

@@ -1,4 +1,5 @@
 - id: task-generator-strategy
+  code: K-1
   title: Research and choose upgraded generator strategy
   status: open
   priority: high
@@ -17,6 +18,7 @@
   updated_at: 2026-05-28
 
 - id: task-freezer-decision
+  code: K-2
   title: Decide whether to get a new chest freezer
   status: open
   priority: high
@@ -40,6 +42,7 @@
   updated_at: 2026-05-28
 
 - id: task-shade-emt-upgrade
+  code: K-3
   title: Purchase EMT poles and 90% mesh shade for new shade structure
   status: open
   priority: high
@@ -58,6 +61,7 @@
   updated_at: 2026-05-28
 
 - id: task-collect-deposits-dues
+  code: K-4
   title: Collect camper deposits and full dues
   status: open
   priority: urgent
@@ -76,6 +80,7 @@
   updated_at: 2026-05-28
 
 - id: task-interview-gaelle
+  code: K-5
   title: Interview Gaelle
   status: open
   priority: normal
@@ -93,6 +98,7 @@
   updated_at: 2026-05-28
 
 - id: task-interview-eric
+  code: K-6
   title: Interview Eric
   status: open
   priority: normal
@@ -111,6 +117,7 @@
   updated_at: 2026-05-28
 
 - id: task-interview-julia-expectations
+  code: K-7
   title: Conduct expectations conversation with Julia
   status: open
   priority: normal
@@ -130,6 +137,7 @@
   updated_at: 2026-05-28
 
 - id: task-source-art-car
+  code: K-8
   title: Source an art car partnership for Tea & Tunes
   status: open
   priority: high
@@ -153,6 +161,7 @@
   updated_at: 2026-05-28
 
 - id: task-revise-camp-layout
+  code: K-9
   title: Revise 2026 camp layout
   status: open
   priority: high
@@ -170,6 +179,7 @@
   updated_at: 2026-05-28
 
 - id: task-porto-greywater-service-plan
+  code: K-10
   title: Plan USS, porto, and greywater servicing
   status: open
   priority: normal
@@ -187,6 +197,7 @@
   updated_at: 2026-05-28
 
 - id: task-food-quantity-reduction
+  code: K-11
   title: Reduce 2026 food quantities and use leftover inventory
   status: open
   priority: normal
@@ -209,6 +220,7 @@
   updated_at: 2026-05-28
 
 - id: task-finalize-budget-assumptions
+  code: K-12
   title: Finalize 2026 budget assumptions
   status: open
   priority: high
@@ -226,6 +238,7 @@
   updated_at: 2026-05-28
 
 - id: task-onboarding-materials
+  code: K-13
   title: Update camper onboarding and manuals
   status: open
   priority: normal
@@ -243,6 +256,7 @@
   updated_at: 2026-05-28
 
 - id: task-tea-tunes-supplies
+  code: K-14
   title: Confirm Tea & Tunes supplies and tea-house setup
   status: open
   priority: normal
@@ -265,6 +279,7 @@
   updated_at: 2026-05-28
 
 - id: task-sound-oasis-library-setup
+  code: K-15
   title: Prepare Sound Oasis and library sound/interactivity setup
   status: open
   priority: normal
@@ -282,6 +297,7 @@
   updated_at: 2026-05-28
 
 - id: task-restock-build-consumables
+  code: K-16
   title: Restock build consumables
   status: open
   priority: normal
@@ -299,6 +315,7 @@
   updated_at: 2026-05-28
 
 - id: task-water-cold-chain-prep
+  code: K-17
   title: Plan water and cold-chain prep
   status: open
   priority: normal
@@ -316,6 +333,7 @@
   updated_at: 2026-05-28
 
 - id: task-truck-trailer-readiness
+  code: K-18
   title: Prepare truck and trailer readiness checklist
   status: open
   priority: normal
@@ -333,6 +351,7 @@
   updated_at: 2026-05-28
 
 - id: task-fire-fuel-propane-prep
+  code: K-19
   title: Prepare fire, fuel, and propane logistics
   status: open
   priority: normal
@@ -350,6 +369,7 @@
   updated_at: 2026-05-28
 
 - id: task-reimbursement-expense-process
+  code: K-20
   title: Set reimbursement and expense submission process
   status: open
   priority: normal
@@ -367,6 +387,7 @@
   updated_at: 2026-05-28
 
 - id: task-kitchen-wind-stability
+  code: K-21
   title: Improve kitchen wind stability
   status: open
   priority: normal
@@ -384,6 +405,7 @@
   updated_at: 2026-05-28
 
 - id: task-shower-system-evaluation
+  code: K-22
   title: Evaluate shower system and backup pump needs
   status: open
   priority: normal
@@ -406,6 +428,7 @@
   updated_at: 2026-05-28
 
 - id: task-power-tool-readiness
+  code: K-23
   title: Prepare power tools, chargers, and inverters
   status: open
   priority: normal
@@ -428,6 +451,7 @@
   updated_at: 2026-05-28
 
 - id: task-reno-shopping-kitchen-inventory
+  code: K-24
   title: Run Reno shopping and kitchen inventory pass
   status: open
   priority: normal
@@ -445,6 +469,7 @@
   updated_at: 2026-05-28
 
 - id: task-camp-comfort-chairs-rugs
+  code: K-25
   title: Improve camp comfort chairs and rugs
   status: open
   priority: low
@@ -462,6 +487,7 @@
   updated_at: 2026-05-28
 
 - id: task-camper-roster-logistics-fields
+  code: K-26
   title: Maintain camper roster and logistics fields
   status: open
   priority: normal
@@ -484,6 +510,7 @@
   updated_at: 2026-05-28
 
 - id: task-placement-application-materials
+  code: K-27
   title: Prepare 2026 placement and application materials
   status: open
   priority: high
@@ -501,6 +528,7 @@
   updated_at: 2026-05-28
 
 - id: task-f-and-b-prep-workflow
+  code: K-28
   title: Finalize F&B prep workflow
   status: open
   priority: normal
@@ -523,6 +551,7 @@
   updated_at: 2026-05-28
 
 - id: task-kitchen-consumables-replenishment
+  code: K-29
   title: Replenish kitchen consumables
   status: open
   priority: normal
@@ -545,6 +574,7 @@
   updated_at: 2026-05-28
 
 - id: task-library-journal-interactivity
+  code: K-30
   title: Prepare library and journal interactivity
   status: open
   priority: normal
@@ -567,6 +597,7 @@
   updated_at: 2026-05-28
 
 - id: task-post-burn-feedback-capture-plan
+  code: K-31
   title: Plan pre-burn post-burn-feedback capture
   status: open
   priority: normal
@@ -584,6 +615,7 @@
   updated_at: 2026-05-28
 
 - id: task-prebuild-reno-logistics
+  code: K-32
   title: Plan pre-build and Reno logistics workback
   status: open
   priority: high

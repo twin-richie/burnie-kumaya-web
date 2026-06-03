@@ -17,6 +17,7 @@ const tasks = [
   {
     ...base,
     id: "blocked-urgent",
+    code: "K-1",
     title: "Blocked urgent",
     status: "blocked",
     priority: "urgent",
@@ -26,6 +27,7 @@ const tasks = [
   {
     ...base,
     id: "unowned-review",
+    code: "K-2",
     title: "Unowned review",
     status: "open",
     priority: "high",
@@ -35,6 +37,7 @@ const tasks = [
   {
     ...base,
     id: "future-low",
+    code: "K-3",
     title: "Future low",
     status: "in_progress",
     priority: "low",

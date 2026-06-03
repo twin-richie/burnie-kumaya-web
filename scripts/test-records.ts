@@ -10,6 +10,7 @@ const datastore = {
   tasks: [
     {
       id: "task-a",
+      code: "K-1",
       title: "Task A",
       status: "open",
       priority: "high",

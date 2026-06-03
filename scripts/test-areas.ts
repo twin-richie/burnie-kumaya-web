@@ -27,6 +27,7 @@ const datastore = {
   tasks: [
     {
       id: "task-open",
+      code: "K-1",
       title: "Open task",
       status: "open",
       priority: "high",
@@ -40,6 +41,7 @@ const datastore = {
     },
     {
       id: "task-blocked",
+      code: "K-2",
       title: "Blocked task",
       status: "blocked",
       priority: "urgent",

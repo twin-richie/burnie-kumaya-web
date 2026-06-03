@@ -51,6 +51,7 @@ export const personSchema = z.strictObject({
 
 export const taskSchema = z.strictObject({
   id: nonEmptyString,
+  code: z.string().regex(/^K-\d+$/, "Expected append-only task code like K-1"),
   title: nonEmptyString,
   status: z.enum(["open", "in_progress", "blocked", "done", "parked"]),
   priority: z.enum(["urgent", "high", "normal", "low"]),

@@ -58,14 +58,17 @@ function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilesto
   const totalDays = Math.max(1, daysBetween(SEASON_START_DATE, MAN_BURN_DATE));
   const burnStart = timelineOffsetPercent("2026-08-31");
   const todayOffset = timelineOffsetPercent(today);
-  const dayGrid = Array.from({ length: totalDays + 1 }, (_, day) => ({ day, offsetPercent: Math.round((day / totalDays) * 10000) / 100 }));
+  const weekGrid = Array.from({ length: Math.floor(totalDays / 7) + 1 }, (_, week) => {
+    const day = week * 7;
+    return { day, offsetPercent: Math.round((day / totalDays) * 10000) / 100 };
+  });
 
   return (
     <div className="px-1 pb-2 pt-7">
       <div className="relative h-1.5 rounded-full bg-border">
-        <div className="pointer-events-none absolute inset-y-[-18px] inset-x-0" data-overview-gantt-day-grid="true">
-          {dayGrid.map((tick) => (
-            <span key={`overview-day-${tick.day}`} className="absolute inset-y-0 w-px bg-border/35" style={{ left: `${tick.offsetPercent}%` }} aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-y-[-18px] inset-x-0" data-overview-gantt-week-grid="true">
+          {weekGrid.map((tick) => (
+            <span key={`overview-week-${tick.day}`} className="absolute inset-y-0 w-px bg-border/35" style={{ left: `${tick.offsetPercent}%` }} aria-hidden="true" data-overview-gantt-week-tick="true" />
           ))}
         </div>
         <div className="absolute inset-y-[-3px] rounded-full bg-primary/30 ring-1 ring-primary/40" style={{ left: `${burnStart}%`, right: 0 }} title="Burn week" />
@@ -82,7 +85,7 @@ function SeasonRail({ rows, today }: { rows: ReturnType<typeof buildGanttMilesto
         ))}
       </div>
       <div className="mt-2 flex justify-between text-xs font-medium text-muted-foreground">
-        <span>First meeting</span>
+        <span>Season start</span>
         <span className="text-primary">Burn week</span>
       </div>
     </div>

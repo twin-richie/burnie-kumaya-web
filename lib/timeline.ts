@@ -78,6 +78,12 @@ export function buildGanttMilestoneRows(milestones: Milestone[]): GanttMilestone
   });
 }
 
+export function buildUpcomingGanttMilestoneRows(milestones: Milestone[], asOf: Date | string = new Date()): GanttMilestoneRow[] {
+  const today = typeof asOf === "string" ? asOf : isoDateOnly(asOf);
+  const upcomingMilestones = milestones.filter((milestone) => milestone.date >= today);
+  return buildGanttMilestoneRows(upcomingMilestones).filter((row) => row.date >= today);
+}
+
 export function groupMilestonesByTime(datastore: Datastore, asOf = new Date()) {
   const today = isoDateOnly(asOf);
   const upcoming = datastore.milestones.filter((milestone) => milestone.date >= today);

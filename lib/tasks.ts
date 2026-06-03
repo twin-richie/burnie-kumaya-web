@@ -6,7 +6,7 @@ export const taskPriorities = ["urgent", "high", "normal", "low"] as const satis
 export const taskConfidences = ["high", "medium", "low"] as const satisfies readonly Confidence[];
 export const taskDueStates = ["overdue", "due-soon", "dated", "no-date"] as const;
 export const taskReviewStates = ["needs-review", "clear"] as const;
-export const taskSorts = ["attention", "title-asc", "title-desc", "owner-asc", "owner-desc", "priority-asc", "priority-desc", "due-date-asc", "due-date-desc", "review-asc", "review-desc", "updated"] as const;
+export const taskSorts = ["attention", "code-asc", "code-desc", "title-asc", "title-desc", "owner-asc", "owner-desc", "priority-asc", "priority-desc", "due-date-asc", "due-date-desc", "review-asc", "review-desc", "updated"] as const;
 
 export type TaskDueState = (typeof taskDueStates)[number];
 export type TaskReviewState = (typeof taskReviewStates)[number];
@@ -112,6 +112,9 @@ function compareDirection(value: number, sort: TaskSort): number {
 }
 
 function compareTasks(a: Task, b: Task, sort: TaskSort, asOf: Date): number {
+  if (sort === "code-asc" || sort === "code-desc") {
+    return compareDirection(taskCodeNumber(a.code) - taskCodeNumber(b.code), sort) || compareTasks(a, b, "attention", asOf);
+  }
   if (sort === "title-asc" || sort === "title-desc") {
     return compareDirection(a.title.localeCompare(b.title), sort) || compareTasks(a, b, "attention", asOf);
   }
@@ -133,6 +136,11 @@ function compareTasks(a: Task, b: Task, sort: TaskSort, asOf: Date): number {
     return b.updated_at.localeCompare(a.updated_at) || compareTasks(a, b, "attention", asOf);
   }
   return taskAttentionScore(b, asOf) - taskAttentionScore(a, asOf) || a.title.localeCompare(b.title);
+}
+
+function taskCodeNumber(code: string): number {
+  const match = /^K-(\d+)$/.exec(code);
+  return match ? Number(match[1]) : Number.POSITIVE_INFINITY;
 }
 
 export function activeFilterCount(filters: TaskFilters): number {

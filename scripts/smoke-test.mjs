@@ -275,6 +275,14 @@ async function assertAreasPageGrid() {
 async function assertCritiqueFixes() {
   const overviewHtml = await fetchHtml("/");
   const timelineSection = sectionBetween(overviewHtml, "timeline", "tasks");
+  const overviewWeekTicks = timelineSection.match(/data-overview-gantt-week-tick="true"/g) ?? [];
+  const overviewWeeksToBurn = Math.floor((Date.parse("2026-09-06T00:00:00.000Z") - Date.parse("2026-05-25T00:00:00.000Z")) / (7 * 86_400_000)) + 1;
+  if (!timelineSection.includes('data-overview-gantt-week-grid="true"') || overviewWeekTicks.length !== Math.max(1, overviewWeeksToBurn)) {
+    throw new Error(`Overview timeline should render weekly ticks only, expected ${Math.max(1, overviewWeeksToBurn)}, found ${overviewWeekTicks.length}`);
+  }
+  if (timelineSection.includes('data-overview-gantt-day-grid="true"') || timelineSection.includes('overview-day-')) {
+    throw new Error("Overview timeline should not render daily tick marks");
+  }
   const tasksOverviewSection = sectionBetween(overviewHtml, "tasks", "areas");
   if (!tasksOverviewSection.includes('data-attention-dashboard="true"')) {
     throw new Error("Overview should combine camp-lead attention into the Tasks section before the task table");
@@ -349,11 +357,11 @@ async function assertCritiqueFixes() {
   if (!timelineHtml.includes("Burn week")) {
     throw new Error("Timeline should still emphasize the Burn week deadline band");
   }
-  if (!timelineHtml.includes('data-gantt-today-marker="true"') || !timelineHtml.includes("Today · Jun 02")) {
+  if (!timelineHtml.includes('data-gantt-today-marker="true"') || !timelineHtml.includes("Today ·")) {
     throw new Error("Timeline should mark today on the rail with a hover label");
   }
-  if (!timelineHtml.includes("First meeting") || timelineHtml.includes("Phase markers")) {
-    throw new Error("Timeline rail should label the season start as First meeting and omit the middle Phase markers label");
+  if (!timelineHtml.includes("Season start") || timelineHtml.includes("First meeting") || timelineHtml.includes("Phase markers")) {
+    throw new Error("Timeline rail should label the season start generically and omit past meeting/phase labels");
   }
   for (const path of ["/", "/timeline", "/updates"]) {
     const html = await fetchHtml(path);
@@ -434,6 +442,9 @@ async function assertQueuedDesignUpdates() {
   }
   if (timelineCombinedSection.includes('data-timeline-upcoming-list="true"')) {
     throw new Error("Timeline page should not render a duplicate upcoming milestone list below the Gantt cards");
+  }
+  if (timelineCombinedSection.includes("Kumaya committee meeting") || timelineCombinedSection.includes("May 25")) {
+    throw new Error("Upcoming timeline section should not render past milestones/events");
   }
   const timelineMilestoneWithSources = timelineHtml.match(/<div[^>]*data-milestone-item="true"[\s\S]*?<\/div>\s*<\/div>/)?.[0] ?? "";
   if (!timelineMilestoneWithSources) {

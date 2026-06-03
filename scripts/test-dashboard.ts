@@ -18,6 +18,7 @@ const fixture = {
   tasks: [
     {
       id: "overdue",
+      code: "K-1",
       title: "Overdue",
       status: "open",
       priority: "high",
@@ -31,6 +32,7 @@ const fixture = {
     },
     {
       id: "due-soon",
+      code: "K-2",
       title: "Due soon",
       status: "open",
       priority: "normal",
@@ -44,6 +46,7 @@ const fixture = {
     },
     {
       id: "blocked",
+      code: "K-3",
       title: "Blocked",
       status: "blocked",
       priority: "urgent",
